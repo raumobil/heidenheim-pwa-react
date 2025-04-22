@@ -1,0 +1,48 @@
+name: build-prod
+on:
+  workflow_dispatch:
+
+# https://docs.github.com/en/actions/using-jobs/using-concurrency#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  RAUMO_PROJECT: "heidenheim-pwa"
+
+jobs:
+  ci-checks:
+    runs-on: selfhosted-linux
+    env:
+      # see https://nextjs.org/telemetry
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 'install dependencies'
+        run: npm ci
+      - name: 'lint'
+        run: npm run lint -- --max-warnings 0
+#  jest is not configured in this project
+#      - name: 'test'
+#        run: npm run test:ci -- --passWithNoTests
+      - name: 'build'
+        run: npm run build
+
+  build-image:
+    runs-on: selfhosted-linux
+    environment:
+      name: prod
+      url: "https://heidenheim-pwa.prod.raumo.de"
+    needs: [ ci-checks]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: take datetimestamp
+        run: date +%Y%m%d%H%M > DOCKER_TAG
+      - name: build image
+        run: docker build -t hub.raumobil.net/raumobil/${RAUMO_PROJECT}_prod:$(cat DOCKER_TAG) .
+      - name: push latest
+        run: docker push hub.raumobil.net/raumobil/${RAUMO_PROJECT}_prod:$(cat DOCKER_TAG)
