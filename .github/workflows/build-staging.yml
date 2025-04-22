@@ -1,0 +1,48 @@
+name: "build & deploy"
+on:
+  push:
+    branches:
+      - "main"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# https://docs.github.com/en/actions/using-jobs/using-concurrency#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  RAUMO_PROJECT: "heidenheim-pwa"
+
+jobs:
+  build-image:
+    if: github.ref_name == 'main'
+    runs-on: selfhosted-linux
+    environment:
+      name: staging
+      url: "https://heidenheim-pwa.staging.raumo.de"
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: take datetimestamp
+        run: date +%Y%m%d%H%M > DOCKER_TAG
+      - name: build image
+        run: docker build -t hub.raumobil.net/raumobil/${RAUMO_PROJECT}_staging:$(cat DOCKER_TAG) .
+      - name: push latest
+        run: docker push hub.raumobil.net/raumobil/${RAUMO_PROJECT}_staging:$(cat DOCKER_TAG)
+
+  # build-image-storybook:
+  #   if: github.ref_name == 'main'
+  #   runs-on: selfhosted-linux
+  #   environment:
+  #     name: storybook
+  #     url: https://storybook-heidenheim-pwa.staging.raumo.de
+  #   steps:
+  #     - name: checkout repo
+  #       uses: actions/checkout@v4
+  #     - name: take datetimestamp
+  #       run: date +%Y%m%d%H%M > DOCKER_TAG
+  #     - name: build image
+  #       run: docker build -t hub.raumobil.net/raumobil/${RAUMO_PROJECT}_storybook_staging:$(cat DOCKER_TAG) -f ./Dockerfile_storybook .
+  #     - name: push latest
+  #       run: docker push hub.raumobil.net/raumobil/${RAUMO_PROJECT}_storybook_staging:$(cat DOCKER_TAG)
