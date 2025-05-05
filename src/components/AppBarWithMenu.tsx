@@ -63,11 +63,11 @@ const AppBarWithMenu = () => {
               <Toolbar>
                 <Grid container direction='row' alignItems='center' size='grow'>
                   <Grid size='grow' justifyItems='center'>
-                    <Typography>Menü</Typography>
+                    <Typography color='primary' variant='titleLarge' component='div'>Menü</Typography>
                   </Grid>
                   <Grid size='auto'>
                     <IconButton onClick={closeMenu}>
-                      <Close/>
+                      <Close sx={{ color: 'var(--mui-palette-text-dark)' }} />
                     </IconButton>
                   </Grid>
                 </Grid>
@@ -77,7 +77,15 @@ const AppBarWithMenu = () => {
               <List>
                 <ListItem>
                   <ListItemButton>
-                    <ListItemText primary='Kartenansicht' />
+                    <ListItemText
+                      primary='Kartenansicht'
+                      slotProps={{
+                        primary: {
+                          variant: 'textLarge',
+                          color: 'textDark'
+                        }
+                      }}
+                    />
                   </ListItemButton>
                 </ListItem>
               </List>
