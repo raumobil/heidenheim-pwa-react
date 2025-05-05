@@ -1,5 +1,6 @@
 'use client'
 
+import HeidenheimLogo from "@/components/HeidenheimLogo";
 import { Close, Menu } from "@mui/icons-material";
 import { AppBar, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, styled, Toolbar, Typography } from "@mui/material";
 import { useCallback, useState } from "react";
@@ -32,9 +33,12 @@ const AppBarWithMenu = () => {
         }}
       >
         <Toolbar>
-          <Grid container direction='row' size='grow'>
+          <Grid container direction='row' size='grow' alignItems='center' spacing={2}>
+            <Grid size='auto'>
+              <HeidenheimLogo color='primary'/>
+            </Grid>
             <Grid size='grow'>
-              {/* placeholder for logo */}
+              <Typography color='primary' variant='titleLarge'>Heidenheim smap</Typography>
             </Grid>
             <Grid size='auto'>
               <IconButton onClick={openMenu}>
