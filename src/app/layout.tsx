@@ -28,7 +28,11 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Container maxWidth="sm" sx={{ height: "calc(100dvh - 64px)" }}>
+            <Container
+              maxWidth="sm"
+              // 64px is the hight of the AppBar
+              sx={{ height: "calc(100dvh - 64px)" }}
+            >
               <AppBarWithMenu />
               {children}
             </Container>
