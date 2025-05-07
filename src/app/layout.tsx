@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
-import { Container, CssBaseline, ThemeProvider } from "@mui/material"
+import { CssBaseline, ThemeProvider } from "@mui/material"
 import theme from "@/theme"
 import AppBarWithMenu from "@/components/AppBarWithMenu"
 
@@ -31,14 +31,8 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Container
-              maxWidth="sm"
-              // 64px is the height of the AppBar
-              sx={{ height: "calc(100dvh - 64px)" }}
-            >
-              <AppBarWithMenu />
-              {children}
-            </Container>
+            <AppBarWithMenu />
+            {children}
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

@@ -1,3 +1,6 @@
+/**
+ * this page renders a smap inside an iframe
+ */
 export default function Home() {
   return (
     <iframe
