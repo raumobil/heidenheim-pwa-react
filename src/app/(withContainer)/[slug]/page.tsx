@@ -3,14 +3,15 @@ import { Typography } from "@mui/material"
 /**
  * this is a regular page with content depending on the slug (WIP)
  */
-const Page = ({ params } : { params: { slug: string}}) => {
+const Page = async ({ params } : { params: Promise<{ slug: string}>}) => {
+  const { slug } = await params
   return (
     <Typography
       variant='titleExtraLarge'
       component='h2'
       color='textDark'
     >
-      {params.slug}
+      {slug}
     </Typography>
   )
 }
