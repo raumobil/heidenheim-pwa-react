@@ -23,11 +23,6 @@
         "type": "image/png",
         "sizes": "512x512",
         "purpose": "any maskable"
-    },
-    {
-        "src": "/pwa-icons/vector.png",
-        "type": "image/png",
-        "sizes": "48x48"
     }
   ]
 }
