@@ -1,13 +1,24 @@
 {
   "AppBarWithMenu": {
     "toolbar": {
-      "title": "Heidenheim smap"
+      "title": "Heidenheim smap",
+      "button": {
+        "openMenu": "Menü öffnen"
+      }
     },
     "menu": {
       "title": "Menü",
+      "button": {
+        "closeMenu": "Menü schließen"
+      },
       "entries": {
         "map": "Kartenansicht"
       }
+    }
+  },
+  "Home": {
+    "iframe": {
+      "title": "Karte"
     }
   }
 }

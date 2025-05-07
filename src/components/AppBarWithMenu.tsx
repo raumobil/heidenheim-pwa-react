@@ -41,10 +41,10 @@ const AppBarWithMenu = () => {
               <HeidenheimLogo color='primary'/>
             </Grid>
             <Grid size='grow'>
-              <Typography color='primary' variant='titleLarge'>{t('toolbar.title')}</Typography>
+              <Typography color='primary' variant='titleLarge' component='h1'>{t('toolbar.title')}</Typography>
             </Grid>
             <Grid size='auto'>
-              <IconButton onClick={openMenu}>
+              <IconButton onClick={openMenu} aria-label={t('toolbar.button.openMenu')}>
                 <Menu color='primary' />
               </IconButton>
             </Grid>
@@ -73,7 +73,7 @@ const AppBarWithMenu = () => {
                     <Typography color='primary' variant='titleLarge' component='div'>{t('menu.title')}</Typography>
                   </Grid>
                   <Grid size='auto'>
-                    <IconButton onClick={closeMenu}>
+                    <IconButton onClick={closeMenu} aria-label={t('menu.button.closeMenu')}>
                       <Close sx={{ color: 'var(--mui-palette-text-dark)' }} />
                     </IconButton>
                   </Grid>
