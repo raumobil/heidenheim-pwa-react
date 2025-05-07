@@ -1,7 +1,7 @@
 {
   "AppBarWithMenu": {
     "toolbar": {
-      "title": "Heidenheim smap",
+      "title": "Heidenheim <thin>smap</thin>",
       "button": {
         "openMenu": "Menü öffnen"
       }

@@ -44,6 +44,11 @@ const theme = createTheme({
       fontWeight: 600,
       lineHeight: 1.2,
     },
+    titleLargeThin: {
+      fontSize: '20px',
+      fontWeight: 300,
+      lineHeight: 1.2,
+    },
     titleSmall: {
       fontSize: '18px',
       fontWeight: 600,
@@ -69,6 +74,7 @@ declare module '@mui/material/styles' {
     textLargeColored: React.CSSProperties;
     titleExtraLarge: React.CSSProperties;
     titleLarge: React.CSSProperties;
+    titleLargeThin: React.CSSProperties;
     titleSmall: React.CSSProperties;
   }
 
@@ -79,6 +85,7 @@ declare module '@mui/material/styles' {
     textLargeColored?: React.CSSProperties;
     titleExtraLarge?: React.CSSProperties;
     titleLarge?: React.CSSProperties;
+    titleLargeThin?: React.CSSProperties;
     titleSmall?: React.CSSProperties;
   }
 }
@@ -91,6 +98,7 @@ declare module '@mui/material/Typography' {
     textLargeColored: true;
     titleExtraLarge: true;
     titleLarge: true;
+    titleLargeThin: true;
     titleSmall: true;
   }
 }

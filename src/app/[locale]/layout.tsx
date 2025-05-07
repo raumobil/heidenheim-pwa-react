@@ -9,7 +9,7 @@ import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
 
 const inter = Inter({
-  weight: ['400', '500', '600', '700', '900'],
+  weight: ['300', '400', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',

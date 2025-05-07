@@ -41,7 +41,11 @@ const AppBarWithMenu = () => {
               <HeidenheimLogo color='primary'/>
             </Grid>
             <Grid size='grow'>
-              <Typography color='primary' variant='titleLarge' component='h1'>{t('toolbar.title')}</Typography>
+              <Typography color='primary' variant='titleLarge' component='h1'>
+                {t.rich('toolbar.title', {
+                  thin: (chunk) => <Typography variant='titleLargeThin'>{chunk}</Typography>
+                })}
+              </Typography>
             </Grid>
             <Grid size='auto'>
               <IconButton onClick={openMenu} aria-label={t('toolbar.button.openMenu')}>
