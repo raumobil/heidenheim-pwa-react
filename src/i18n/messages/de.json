@@ -1,0 +1,13 @@
+{
+  "AppBarWithMenu": {
+    "toolbar": {
+      "title": "Heidenheim smap"
+    },
+    "menu": {
+      "title": "Menü",
+      "entries": {
+        "map": "Kartenansicht"
+      }
+    }
+  }
+}

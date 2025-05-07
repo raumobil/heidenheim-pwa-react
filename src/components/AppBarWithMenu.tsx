@@ -3,6 +3,7 @@
 import HeidenheimLogo from "@/components/HeidenheimLogo";
 import { Close, Menu } from "@mui/icons-material";
 import { AppBar, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, styled, Toolbar, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
 
 // see https://mui.com/material-ui/react-app-bar/#fixed-placement
@@ -22,6 +23,8 @@ const AppBarWithMenu = () => {
   const closeMenu = useCallback(() => {
     setMenuOpen(false)
   }, [])
+
+  const t = useTranslations('AppBarWithMenu')
   
   return (
     <>
@@ -38,7 +41,7 @@ const AppBarWithMenu = () => {
               <HeidenheimLogo color='primary'/>
             </Grid>
             <Grid size='grow'>
-              <Typography color='primary' variant='titleLarge'>Heidenheim smap</Typography>
+              <Typography color='primary' variant='titleLarge'>{t('toolbar.title')}</Typography>
             </Grid>
             <Grid size='auto'>
               <IconButton onClick={openMenu}>
@@ -67,7 +70,7 @@ const AppBarWithMenu = () => {
               <Toolbar>
                 <Grid container direction='row' alignItems='center' size='grow'>
                   <Grid size='grow' justifyItems='center'>
-                    <Typography color='primary' variant='titleLarge' component='div'>Menü</Typography>
+                    <Typography color='primary' variant='titleLarge' component='div'>{t('menu.title')}</Typography>
                   </Grid>
                   <Grid size='auto'>
                     <IconButton onClick={closeMenu}>
@@ -82,7 +85,7 @@ const AppBarWithMenu = () => {
                 <ListItem>
                   <ListItemButton>
                     <ListItemText
-                      primary='Kartenansicht'
+                      primary={t('menu.entries.map')}
                       slotProps={{
                         primary: {
                           variant: 'textLarge',
