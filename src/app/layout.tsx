@@ -30,7 +30,7 @@ export default function RootLayout({
             <CssBaseline />
             <Container
               maxWidth="sm"
-              // 64px is the hight of the AppBar
+              // 64px is the height of the AppBar
               sx={{ height: "calc(100dvh - 64px)" }}
             >
               <AppBarWithMenu />
