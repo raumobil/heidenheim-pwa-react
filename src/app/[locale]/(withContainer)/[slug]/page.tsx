@@ -1,7 +1,7 @@
-import { Typography } from "@mui/material"
+import BackButton from "@/components/BackButton";
+import { Grid, Typography } from "@mui/material"
 import { getMessages, getTranslations } from "next-intl/server"
-import { notFound } from "next/navigation";
-import { Fragment } from "react";
+import { notFound } from "next/navigation"
 
 /**
  * this is a regular page with content depending on the slug (WIP)
@@ -20,26 +20,33 @@ const Page = async ({ params } : { params: Promise<{ slug: string}>}) => {
 
   const t = await getTranslations(`pages.${slug}`)
   return (
-    <>
-      <Typography
-        variant='titleExtraLarge'
-        component='h2'
-        color='textDark'
-      >
-        {t('title')}
-      </Typography>
+    <Grid container direction='column'>
+      <Grid container direction='row'>
+        <Grid>
+          <BackButton />
+        </Grid>
+        <Grid>
+          <Typography
+            variant='titleExtraLarge'
+            component='h2'
+            color='textDark'
+          >
+            {t('title')}
+          </Typography>
+        </Grid>
+      </Grid>
       { // render typography for every key under `body`
         messagesForSlug.body && Object.keys(messagesForSlug.body).map((key) => {
         return (
-          <Fragment key={key}>
+          <Grid key={key}>
             {t.rich(`body.${key}`, {
               h3: (chunks) => <Typography variant='titleSmall' component='h3' marginTop={2} marginBottom={1} color='textDark'>{chunks}</Typography>,
               p: (chunks) => <Typography variant='textLarge' component='p' color='textDark'>{chunks}</Typography>,
             })}
-          </Fragment>
+          </Grid>
         )
       })}
-    </>
+    </Grid>
   )
 }
 
