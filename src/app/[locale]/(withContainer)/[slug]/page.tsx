@@ -21,7 +21,7 @@ const Page = async ({ params } : { params: Promise<{ slug: string}>}) => {
   const t = await getTranslations(`pages.${slug}`)
   return (
     <Grid container direction='column'>
-      <Grid container direction='row'>
+      <Grid container direction='row' paddingY={2} spacing={2}>
         <Grid>
           <BackButton />
         </Grid>
