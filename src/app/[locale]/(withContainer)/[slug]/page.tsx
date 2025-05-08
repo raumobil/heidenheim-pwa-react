@@ -10,7 +10,8 @@ const Page = async ({ params } : { params: Promise<{ slug: string}>}) => {
   const { slug } = await params
 
   // load messages depending on slug
-  const messages = await getMessages();
+  const messages = await getMessages()
+  // @ts-expect-error dynamic key cannot be typechecked
   const messagesForSlug = messages.pages?.[slug]
   
   // 404 if no messages found for slug
@@ -18,6 +19,7 @@ const Page = async ({ params } : { params: Promise<{ slug: string}>}) => {
     notFound()
   }
 
+  // @ts-expect-error dynamic key cannot be typechecked
   const t = await getTranslations(`pages.${slug}`)
   return (
     <Grid container direction='column'>
@@ -39,13 +41,15 @@ const Page = async ({ params } : { params: Promise<{ slug: string}>}) => {
         messagesForSlug.body && Object.keys(messagesForSlug.body).map((key) => {
         return (
           <Grid key={key}>
-            {t.rich(`body.${key}`, {
-              h3: (chunks) => <Typography variant='titleSmall' component='h3' marginBottom={1} color='textDark'>{chunks}</Typography>,
-              p: (chunks) => <Typography variant='textLarge' component='p' marginBottom={2.5} color='textDark'>{chunks}</Typography>,
-              br: () => <br />,
-              ul: (chunks) => <ul style={{ margin: 0, paddingLeft: '16px' }}>{chunks}</ul>,
-              li: (chunks) => <li>{chunks}</li>
-            })}
+            { // @ts-expect-error dynamic key cannot be typechecked
+              t.rich(`body.${key}`, {
+                h3: (chunks) => <Typography variant='titleSmall' component='h3' marginBottom={1} color='textDark'>{chunks}</Typography>,
+                p: (chunks) => <Typography variant='textLarge' component='p' marginBottom={2.5} color='textDark'>{chunks}</Typography>,
+                br: () => <br />,
+                ul: (chunks) => <ul style={{ margin: 0, paddingLeft: '16px' }}>{chunks}</ul>,
+                li: (chunks) => <li>{chunks}</li>
+              })
+            }
           </Grid>
         )
       })}
