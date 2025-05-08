@@ -1,4 +1,4 @@
-import { Link } from "@/i18n/navigation"
+import { Link, usePathname } from "@/i18n/navigation"
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material"
 import { useTranslations } from "next-intl"
 import { MouseEventHandler } from "react"
@@ -8,6 +8,9 @@ import { MouseEventHandler } from "react"
  * a single menu item
  */
 const MenuItem = ({ text, href, onClick } : { text: string, href?: string, onClick: MouseEventHandler }) => {
+  const pathname = usePathname()
+  const isActive = href === pathname
+
   return (
     <ListItem>
       <ListItemButton
@@ -22,8 +25,11 @@ const MenuItem = ({ text, href, onClick } : { text: string, href?: string, onCli
           primary={text}
           slotProps={{
             primary: {
-              variant: 'textLarge',
-              color: 'textDark'
+              variant: isActive ? 'textLargeColored' : 'textLarge',
+              color: 'textDark',
+              sx: {
+                textDecoration: isActive ? 'underline' : 'none'
+              }
             }
           }}
         />
