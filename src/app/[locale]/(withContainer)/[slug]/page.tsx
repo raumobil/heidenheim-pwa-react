@@ -22,10 +22,10 @@ const Page = async ({ params } : { params: Promise<{ slug: string}>}) => {
   return (
     <Grid container direction='column'>
       <Grid container direction='row' paddingY={2} spacing={2}>
-        <Grid>
+        <Grid size='auto'>
           <BackButton />
         </Grid>
-        <Grid>
+        <Grid size='grow'>
           <Typography
             variant='titleExtraLarge'
             component='h2'
