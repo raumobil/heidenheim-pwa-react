@@ -10,11 +10,16 @@
       "title": "Menü",
       "button": {
         "closeMenu": "Menü schließen"
-      },
-      "entries": {
-        "map": "Kartenansicht"
       }
     }
+  },
+  "MainMenu": {
+    "map": "Kartenansicht",
+    "qrCodeScanner": "QR-Code scannen",
+    "legal": "Rechtliches",
+    "accessibility": "Erklärung zur Barrierefreiheit",
+    "imprint": "Impressum",
+    "language": "Sprache"
   },
   "Home": {
     "iframe": {

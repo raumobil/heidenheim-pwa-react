@@ -1,8 +1,9 @@
 'use client'
 
 import HeidenheimLogo from "@/components/HeidenheimLogo";
+import MainMenu from "@/components/MainMenu";
 import { Close, Menu } from "@mui/icons-material";
-import { AppBar, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from "@mui/material";
+import { AppBar, Drawer, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
 
@@ -82,21 +83,7 @@ const AppBarWithMenu = () => {
               </Toolbar>
             </Grid>
             <Grid>
-              <List>
-                <ListItem>
-                  <ListItemButton>
-                    <ListItemText
-                      primary={t('menu.entries.map')}
-                      slotProps={{
-                        primary: {
-                          variant: 'textLarge',
-                          color: 'textDark'
-                        }
-                      }}
-                    />
-                  </ListItemButton>
-                </ListItem>
-              </List>
+              <MainMenu onMenuItemClick={closeMenu} />
             </Grid>
           </Grid>
         </Drawer>
