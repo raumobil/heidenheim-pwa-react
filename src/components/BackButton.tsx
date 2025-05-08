@@ -9,7 +9,7 @@ import { IconButton } from "@mui/material"
  */
 const BackButton = () => {
   return (
-    <IconButton href='/' LinkComponent={Link}>
+    <IconButton href='/' LinkComponent={Link} sx={{ width: '36px', height: '36px' }}>
       <ArrowBackIosNew sx={{ color: '#000' }}/>
     </IconButton>
   )
