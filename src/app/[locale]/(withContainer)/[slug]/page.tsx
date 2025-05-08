@@ -40,8 +40,11 @@ const Page = async ({ params } : { params: Promise<{ slug: string}>}) => {
         return (
           <Grid key={key}>
             {t.rich(`body.${key}`, {
-              h3: (chunks) => <Typography variant='titleSmall' component='h3' marginTop={2} marginBottom={1} color='textDark'>{chunks}</Typography>,
-              p: (chunks) => <Typography variant='textLarge' component='p' color='textDark'>{chunks}</Typography>,
+              h3: (chunks) => <Typography variant='titleSmall' component='h3' marginBottom={1} color='textDark'>{chunks}</Typography>,
+              p: (chunks) => <Typography variant='textLarge' component='p' marginBottom={2.5} color='textDark'>{chunks}</Typography>,
+              br: () => <br />,
+              ul: (chunks) => <ul style={{ margin: 0, paddingLeft: '16px' }}>{chunks}</ul>,
+              li: (chunks) => <li>{chunks}</li>
             })}
           </Grid>
         )

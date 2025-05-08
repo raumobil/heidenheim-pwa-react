@@ -49,7 +49,7 @@ const MainMenu = ({ onMenuItemClick } : { onMenuItemClick: MouseEventHandler }) 
       <MenuItem text={t('map')} href="/" onClick={onMenuItemClick} />
       <MenuItem text={t('qrCodeScanner')} onClick={onMenuItemClick} />
       <MenuItem text={t('legal')} href="/legal" onClick={onMenuItemClick} />
-      <MenuItem text={t('accessibility')} onClick={onMenuItemClick} />
+      <MenuItem text={t('accessibility')} href="/accessibility" onClick={onMenuItemClick} />
       <MenuItem text={t('imprint')} onClick={onMenuItemClick} />
       <MenuItem text={t('language')} onClick={onMenuItemClick} />
     </List>
