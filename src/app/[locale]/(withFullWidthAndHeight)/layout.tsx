@@ -6,8 +6,8 @@ import { Box } from "@mui/material"
 const FullWidthAndHeightLayout = ({ children } : { children: React.ReactNode}) => {
   return (
     <Box
-      // 64px is the height of the AppBar
-      sx={{ height: "calc(100dvh - 64px)" }}
+      // 48px is the height of the AppBar (with dense prop)
+      sx={{ height: "calc(100dvh - 48px)" }}
     >
       {children}
     </Box>

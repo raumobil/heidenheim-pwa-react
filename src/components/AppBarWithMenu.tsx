@@ -2,12 +2,9 @@
 
 import HeidenheimLogo from "@/components/HeidenheimLogo";
 import { Close, Menu } from "@mui/icons-material";
-import { AppBar, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, styled, Toolbar, Typography } from "@mui/material";
+import { AppBar, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
-
-// see https://mui.com/material-ui/react-app-bar/#fixed-placement
-const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
 /**
  * this component contains the main navigation
@@ -29,13 +26,13 @@ const AppBarWithMenu = () => {
   return (
     <>
       <AppBar
-        position='fixed'
+        position='sticky'
         component='nav'
         sx={{
           backgroundColor: 'background.paper'
         }}
       >
-        <Toolbar>
+        <Toolbar variant='dense'>
           <Grid container direction='row' size='grow' alignItems='center' spacing={2}>
             <Grid size='auto'>
               <HeidenheimLogo color='primary'/>
@@ -104,7 +101,6 @@ const AppBarWithMenu = () => {
           </Grid>
         </Drawer>
       </AppBar>
-      <Offset />
     </>
   )
 }
