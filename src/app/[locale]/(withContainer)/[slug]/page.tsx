@@ -22,7 +22,7 @@ const Page = async ({ params } : { params: Promise<{ slug: string}>}) => {
   // @ts-expect-error dynamic key cannot be typechecked
   const t = await getTranslations(`pages.${slug}`)
   return (
-    <Grid container direction='column'>
+    <Grid container direction='column' role='main'>
       <Grid container direction='row' paddingY={2} spacing={2}>
         <Grid size='auto'>
           <BackButton />
