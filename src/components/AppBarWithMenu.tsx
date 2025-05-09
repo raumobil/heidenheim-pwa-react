@@ -47,7 +47,7 @@ const AppBarWithMenu = () => {
             </Grid>
             <Grid size='auto'>
               <IconButton onClick={openMenu} aria-label={t('toolbar.button.openMenu')}>
-                <Menu color='primary' />
+                <Menu sx={{ color: 'var(--mui-palette-text-dark)' }} />
               </IconButton>
             </Grid>
           </Grid>
