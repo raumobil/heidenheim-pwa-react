@@ -113,7 +113,7 @@ const AppBarWithMenu = () => {
             </Grid>
             {showInstallButton && <Grid>
               <Button startIcon={<InstallMobile />} onClick={handleInstallClick}>
-                <Typography variant='labelMedium'>WebApp installieren</Typography>
+                <Typography variant='labelMedium' sx={{textTransform: "none"}}>{t('install.button.label')}</Typography>
               </Button>
             </Grid>}
           </Grid>

@@ -11,6 +11,11 @@
       "button": {
         "closeMenu": "Menü schließen"
       }
+    },
+    "install": {
+      "button": {
+        "label": "WebApp installieren"
+      }
     }
   },
   "MainMenu": {
