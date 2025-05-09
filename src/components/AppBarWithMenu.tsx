@@ -2,10 +2,10 @@
 
 import HeidenheimLogo from "@/components/HeidenheimLogo";
 import MainMenu from "@/components/MainMenu";
-import { Close, Menu } from "@mui/icons-material";
-import { AppBar, Drawer, Grid, IconButton, Toolbar, Typography } from "@mui/material";
+import { Close, InstallMobile, Menu } from "@mui/icons-material";
+import { AppBar, Button, Drawer, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 /**
  * this component contains the main navigation
@@ -20,6 +20,24 @@ const AppBarWithMenu = () => {
 
   const closeMenu = useCallback(() => {
     setMenuOpen(false)
+  }, [])
+
+  const [showInstallButton, setShowInstallButton] = useState<boolean>(false)
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event: Event) => {
+      event.preventDefault()
+
+      if (!window.matchMedia("(desplay-mode: standalone)").matches) {
+        setShowInstallButton(true)
+      }
+    }
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+    }
   }, [])
 
   const t = useTranslations('AppBarWithMenu')
@@ -85,6 +103,11 @@ const AppBarWithMenu = () => {
             <Grid>
               <MainMenu onMenuItemClick={closeMenu} />
             </Grid>
+            {showInstallButton && <Grid>
+              <Button startIcon={<InstallMobile />}>
+                <Typography variant='labelMedium'>WebApp installieren</Typography>
+              </Button>
+            </Grid>}
           </Grid>
         </Drawer>
       </AppBar>
