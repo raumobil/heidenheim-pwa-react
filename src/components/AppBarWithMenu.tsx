@@ -2,8 +2,8 @@
 
 import HeidenheimLogo from "@/components/HeidenheimLogo";
 import MainMenu from "@/components/MainMenu";
-import { Close, InstallMobile, Menu } from "@mui/icons-material";
-import { AppBar, Button, Drawer, Grid, IconButton, Toolbar, Typography } from "@mui/material";
+import { AddBoxOutlined, Close, InstallMobile, IosShare, Menu } from "@mui/icons-material";
+import { Alert, AppBar, Button, Drawer, Grid, IconButton, List, ListItem, ListItemText, Paper, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 
@@ -23,16 +23,22 @@ const AppBarWithMenu = () => {
   }, [])
 
   const [showInstallButton, setShowInstallButton] = useState<boolean>(false)
+  const [showInstallationInstruction, setShowInstallationInstruction] = useState<boolean>(false)
   const [prompt, setPrompt] = useState<Event | null>(null)
 
   useEffect(() => {
+    const browser = window.navigator.userAgent
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault()
 
       if (!window.matchMedia("(desplay-mode: standalone)").matches) {
-        setShowInstallButton(true)
-        // is needed in order to open the installation prompt
-        setPrompt(event)
+        if (browser.includes("Chrome")) {
+          setShowInstallButton(true)
+          // is needed in order to open the installation prompt
+          setPrompt(event)
+        } else if (browser.includes("Safari")) {
+          setShowInstallationInstruction(true)
+        }
       }
     }
 
@@ -115,6 +121,21 @@ const AppBarWithMenu = () => {
               <Button startIcon={<InstallMobile />} onClick={handleInstallClick}>
                 <Typography variant='labelMedium' sx={{textTransform: "none"}}>{t('install.button.label')}</Typography>
               </Button>
+            </Grid>}
+            {showInstallationInstruction && <Grid>
+              <Alert icon={false} severity="info">
+                <Typography variant='textLargeColored'>{t('install.instruction.title')}</Typography>
+                <List sx={{ listStyle: "decimal", pl: 4 }}>
+                  <ListItem sx={{ display: "list-item" }}>
+                    <ListItemText>{t('install.instruction.step1')} <Paper  sx={{display: 'inline-block'}}><IosShare /></Paper></ListItemText>
+                  </ListItem>
+                  <ListItem sx={{ display: "list-item" }}>
+                    <ListItemText>
+                    {t('install.instruction.step2')} <Paper  sx={{display: 'inline-block'}}>{t('install.instruction.toHomeScreen')} <AddBoxOutlined /></Paper>
+                    </ListItemText>
+                  </ListItem>
+                </List>
+              </Alert>
             </Grid>}
           </Grid>
         </Drawer>

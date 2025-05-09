@@ -15,6 +15,12 @@
     "install": {
       "button": {
         "label": "WebApp installieren"
+      },
+      "instruction": {
+        "title": "So installierst Du die WebApp",
+        "step1": "Tippe auf ",
+        "step2": "wähle ",
+        "toHomeScreen": "Zum Home-Bildschirm "
       }
     }
   },
