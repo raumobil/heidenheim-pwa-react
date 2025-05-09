@@ -23,6 +23,7 @@ const AppBarWithMenu = () => {
   }, [])
 
   const [showInstallButton, setShowInstallButton] = useState<boolean>(false)
+  const [prompt, setPrompt] = useState<Event | null>(null)
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: Event) => {
@@ -30,6 +31,8 @@ const AppBarWithMenu = () => {
 
       if (!window.matchMedia("(desplay-mode: standalone)").matches) {
         setShowInstallButton(true)
+        // is needed in order to open the installation prompt
+        setPrompt(event)
       }
     }
 
@@ -39,6 +42,11 @@ const AppBarWithMenu = () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
     }
   }, [])
+
+  const handleInstallClick = () => {
+    // @ts-expect-error actually we expect here the BeforeInstallPromptEvent but it is not supported by at least firefox
+    prompt?.prompt()
+  }
 
   const t = useTranslations('AppBarWithMenu')
   
@@ -104,7 +112,7 @@ const AppBarWithMenu = () => {
               <MainMenu onMenuItemClick={closeMenu} />
             </Grid>
             {showInstallButton && <Grid>
-              <Button startIcon={<InstallMobile />}>
+              <Button startIcon={<InstallMobile />} onClick={handleInstallClick}>
                 <Typography variant='labelMedium'>WebApp installieren</Typography>
               </Button>
             </Grid>}
