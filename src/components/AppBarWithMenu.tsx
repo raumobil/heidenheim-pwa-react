@@ -129,11 +129,28 @@ const AppBarWithMenu = () => {
                 <Typography color='textDark' variant='textLargeColored'>{t('install.instruction.title')}</Typography>
                 <List sx={{ listStyle: "decimal", pl: 2 }}>
                   <ListItem sx={{ display: "list-item" }}>
-                    <ListItemText><Typography color='textDark' variant='textLarge'>{t('install.instruction.step1')}</Typography> <Paper sx={{borderRadius: 0, display: 'inline-block', px: 0.5}}><IosShare /></Paper></ListItemText>
+                    <ListItemText>
+                      <Grid container direction='row' alignItems='center' gap={0.5}>
+                        <Grid>
+                          <Typography color='textDark' variant='textLarge'>{t('install.instruction.step1')} </Typography>
+                        </Grid>
+                        <Grid>
+                          <Paper sx={{borderRadius: 0, display: 'inline-block', px: 0.5}}><IosShare /></Paper>
+                        </Grid>
+                      </Grid>
+                    </ListItemText>
                   </ListItem>
                   <ListItem sx={{ display: "list-item" }}>
                     <ListItemText>
-                    <Typography color='textDark' variant='textLarge'>{t('install.instruction.step2')}</Typography> <Paper sx={{borderRadius: 0, display: 'inline-block', px: 0.5}}><Typography variant='textLarge'>{t('install.instruction.toHomeScreen')}</Typography> <AddBoxOutlined /></Paper>
+                      <Typography color='textDark' variant='textLarge'>
+                        {t('install.instruction.step2')}
+                      </Typography>
+                      <Paper sx={{borderRadius: 0, display: 'inline-block', p: 0.5}}>
+                        <Grid container direction='row' alignItems='center' gap={0.5}>
+                          <Typography variant='textLarge'>{t('install.instruction.toHomeScreen')}</Typography>
+                          <AddBoxOutlined />
+                        </Grid>
+                      </Paper>
                     </ListItemText>
                   </ListItem>
                 </List>
