@@ -117,21 +117,23 @@ const AppBarWithMenu = () => {
             <Grid>
               <MainMenu onMenuItemClick={closeMenu} />
             </Grid>
+          </Grid>
+          <Grid container direction='column' justifyContent='flex-end' alignItems='center' pb={7.5} sx={{height: '100%'}}>
             {showInstallButton && <Grid>
-              <Button startIcon={<InstallMobile />} onClick={handleInstallClick}>
+              <Button startIcon={<InstallMobile />} onClick={handleInstallClick} sx={{py: 1}}>
                 <Typography variant='labelMedium' sx={{textTransform: "none"}}>{t('install.button.label')}</Typography>
               </Button>
             </Grid>}
-            {showInstallationInstruction && <Grid>
-              <Alert icon={false} severity="info">
-                <Typography variant='textLargeColored'>{t('install.instruction.title')}</Typography>
-                <List sx={{ listStyle: "decimal", pl: 4 }}>
+            {showInstallationInstruction && <Grid px={2}>
+              <Alert icon={false} severity="info" sx={{borderRadius: '8px', px: 1.5, py: 1}}>
+                <Typography color='textDark' variant='textLargeColored'>{t('install.instruction.title')}</Typography>
+                <List sx={{ listStyle: "decimal", pl: 2 }}>
                   <ListItem sx={{ display: "list-item" }}>
-                    <ListItemText>{t('install.instruction.step1')} <Paper  sx={{display: 'inline-block'}}><IosShare /></Paper></ListItemText>
+                    <ListItemText><Typography color='textDark' variant='textLarge'>{t('install.instruction.step1')}</Typography> <Paper sx={{borderRadius: 0, display: 'inline-block', px: 0.5}}><IosShare /></Paper></ListItemText>
                   </ListItem>
                   <ListItem sx={{ display: "list-item" }}>
                     <ListItemText>
-                    {t('install.instruction.step2')} <Paper  sx={{display: 'inline-block'}}>{t('install.instruction.toHomeScreen')} <AddBoxOutlined /></Paper>
+                    <Typography color='textDark' variant='textLarge'>{t('install.instruction.step2')}</Typography> <Paper sx={{borderRadius: 0, display: 'inline-block', px: 0.5}}><Typography variant='textLarge'>{t('install.instruction.toHomeScreen')}</Typography> <AddBoxOutlined /></Paper>
                     </ListItemText>
                   </ListItem>
                 </List>
