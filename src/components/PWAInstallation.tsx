@@ -51,7 +51,7 @@ const PWAInstallation = () => {
   const t = useTranslations('PWAInstallation')
   
   return (
-    <Grid container direction='column' justifyContent='flex-end' alignItems='stretch' pb={7.5} sx={{height: '100%'}}>
+    <>
       {showInstallButton && <Grid>
         <Button startIcon={<InstallMobile />} onClick={handleInstallClick} sx={{py: 1, color: 'communication.hyperlink.main'}}>
           <Typography variant='labelMedium' sx={{textTransform: "none" }}>{t('install.button.label')}</Typography>
@@ -91,7 +91,7 @@ const PWAInstallation = () => {
           </Alert>
         </Grid>
       </Grid>}
-    </Grid>
+    </>
   )
 }
 
