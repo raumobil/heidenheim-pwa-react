@@ -52,7 +52,7 @@ const PWAInstallation = () => {
   
   return (
     <Grid container direction='column' justifyContent='flex-end' alignItems='stretch' pb={7.5} sx={{height: '100%'}}>
-      {showInstallButton && <Grid>
+      {showInstallButton && <Grid container justifyContent={'center'}>
         <Button startIcon={<InstallMobile />} onClick={handleInstallClick} sx={{py: 1, color: 'communication.hyperlink.main'}}>
           <Typography variant='labelMedium' sx={{textTransform: "none" }}>{t('install.button.label')}</Typography>
         </Button>
