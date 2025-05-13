@@ -28,17 +28,24 @@ const AppBarWithMenu = () => {
 
   useEffect(() => {
     const browser = window.navigator.userAgent
+    const isPWA = window.matchMedia("(display-mode: standalone)").matches
+    const hasChrome = browser.includes("Chrome")
+    const hasSafari = browser.includes("Safari")
+
+    // this is needed because chrome on mac contains both strings
+    if (!isPWA && !hasChrome && hasSafari) {
+      // safari
+      setShowInstallationInstruction(true)
+    }
+
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault()
 
-      if (!window.matchMedia("(display-mode: standalone)").matches) {
-        if (browser.includes("Chrome")) {
-          setShowInstallButton(true)
-          // is needed in order to open the installation prompt
-          setPrompt(event)
-        } else if (browser.includes("Safari")) {
-          setShowInstallationInstruction(true)
-        }
+      if (!isPWA && hasChrome && !hasSafari) {
+        // chrome
+        setShowInstallButton(true)
+        // is needed in order to open the installation prompt
+        setPrompt(event)
       }
     }
 
