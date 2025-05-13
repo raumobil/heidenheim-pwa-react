@@ -31,7 +31,7 @@ const AppBarWithMenu = () => {
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault()
 
-      if (!window.matchMedia("(desplay-mode: standalone)").matches) {
+      if (!window.matchMedia("(display-mode: standalone)").matches) {
         if (browser.includes("Chrome")) {
           setShowInstallButton(true)
           // is needed in order to open the installation prompt
