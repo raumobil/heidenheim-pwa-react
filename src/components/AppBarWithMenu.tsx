@@ -125,43 +125,45 @@ const AppBarWithMenu = () => {
               <MainMenu onMenuItemClick={closeMenu} />
             </Grid>
           </Grid>
-          <Grid container direction='column' justifyContent='flex-end' alignItems='center' pb={7.5} sx={{height: '100%'}}>
+          <Grid container direction='column' justifyContent='flex-end' alignItems='stretch' pb={7.5} sx={{height: '100%'}}>
             {showInstallButton && <Grid>
               <Button startIcon={<InstallMobile />} onClick={handleInstallClick} sx={{py: 1, color: 'communication.hyperlink.main'}}>
                 <Typography variant='labelMedium' sx={{textTransform: "none" }}>{t('install.button.label')}</Typography>
               </Button>
             </Grid>}
-            {showInstallationInstruction && <Grid px={2}>
-              <Alert icon={false} severity="info" sx={{borderRadius: '8px', px: 1.5, py: 1}}>
-                <Typography color='textDark' variant='textLargeColored'>{t('install.instruction.title')}</Typography>
-                <List sx={{ listStyle: "decimal", pl: 2 }}>
-                  <ListItem sx={{ display: "list-item" }}>
-                    <ListItemText>
-                      <Grid container direction='row' alignItems='center' gap={0.5}>
-                        <Grid>
-                          <Typography color='textDark' variant='textLarge'>{t('install.instruction.step1')} </Typography>
-                        </Grid>
-                        <Grid>
-                          <Paper sx={{borderRadius: 0, display: 'inline-block', px: 0.5}}><IosShare /></Paper>
-                        </Grid>
-                      </Grid>
-                    </ListItemText>
-                  </ListItem>
-                  <ListItem sx={{ display: "list-item" }}>
-                    <ListItemText>
-                      <Typography color='textDark' variant='textLarge'>
-                        {t('install.instruction.step2')}
-                      </Typography>
-                      <Paper sx={{borderRadius: 0, display: 'inline-block', p: 0.5}}>
+            {showInstallationInstruction && <Grid px={2} container direction={'row'}>
+              <Grid size='grow'>
+                <Alert icon={false} severity="info" sx={{borderRadius: '8px', px: 1.5, py: 1, color: 'text.dark', width: '100%'}}>
+                  <Typography color='textDark' variant='textLargeColored'>{t('install.instruction.title')}</Typography>
+                  <List sx={{ listStyle: "decimal", pl: 2.5 }} component={'ol'}>
+                    <ListItem sx={{ display: "list-item", paddingX: 0, paddingY: 0.5 }}>
+                      <ListItemText>
                         <Grid container direction='row' alignItems='center' gap={0.5}>
-                          <Typography variant='textLarge'>{t('install.instruction.toHomeScreen')}</Typography>
-                          <AddBoxOutlined />
+                          <Grid>
+                            <Typography color='textDark' variant='textLarge'>{t('install.instruction.step1')} </Typography>
+                          </Grid>
+                          <Grid>
+                            <Paper sx={{borderRadius: 0, display: 'inline-block', px: 0.5}}><IosShare /></Paper>
+                          </Grid>
                         </Grid>
-                      </Paper>
-                    </ListItemText>
-                  </ListItem>
-                </List>
-              </Alert>
+                      </ListItemText>
+                    </ListItem>
+                    <ListItem sx={{ display: "list-item", paddingX: 0, paddingY: 0.5 }}>
+                      <ListItemText>
+                        <Typography color='textDark' variant='textLarge'>
+                          {t('install.instruction.step2')}
+                        </Typography>
+                        <Paper sx={{borderRadius: 0, display: 'inline-block', p: 0.5}}>
+                          <Grid container direction='row' alignItems='center' gap={0.5}>
+                            <Typography variant='textLarge'>{t('install.instruction.toHomeScreen')}</Typography>
+                            <AddBoxOutlined />
+                          </Grid>
+                        </Paper>
+                      </ListItemText>
+                    </ListItem>
+                  </List>
+                </Alert>
+              </Grid>
             </Grid>}
           </Grid>
         </Drawer>
