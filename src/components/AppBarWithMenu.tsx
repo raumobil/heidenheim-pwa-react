@@ -120,8 +120,8 @@ const AppBarWithMenu = () => {
           </Grid>
           <Grid container direction='column' justifyContent='flex-end' alignItems='center' pb={7.5} sx={{height: '100%'}}>
             {showInstallButton && <Grid>
-              <Button startIcon={<InstallMobile />} onClick={handleInstallClick} sx={{py: 1}}>
-                <Typography variant='labelMedium' sx={{textTransform: "none"}}>{t('install.button.label')}</Typography>
+              <Button startIcon={<InstallMobile />} onClick={handleInstallClick} sx={{py: 1, color: 'communication.hyperlink.main'}}>
+                <Typography variant='labelMedium' sx={{textTransform: "none" }}>{t('install.button.label')}</Typography>
               </Button>
             </Grid>}
             {showInstallationInstruction && <Grid px={2}>
