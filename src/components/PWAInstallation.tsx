@@ -28,7 +28,7 @@ const PWAInstallation = () => {
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault()
 
-      if (!isPWA && hasChrome && !hasSafari) {
+      if (!isPWA && hasChrome) {
         // chrome
         setShowInstallButton(true)
         // is needed in order to open the installation prompt
