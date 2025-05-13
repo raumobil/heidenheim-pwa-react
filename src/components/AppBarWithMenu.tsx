@@ -86,9 +86,7 @@ const AppBarWithMenu = () => {
             <MainMenu onMenuItemClick={closeMenu} />
           </Grid>
         </Grid>
-        <Grid container direction='column' justifyContent='flex-end' alignItems='stretch' pb={7.5} sx={{height: '100%'}}>
-          <PWAInstallation />
-        </Grid>
+        <PWAInstallation />
       </Drawer>
     </AppBar>
   )
