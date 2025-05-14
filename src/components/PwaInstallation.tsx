@@ -3,7 +3,7 @@
 import { AddBoxOutlined, InstallMobile, IosShare } from "@mui/icons-material";
 import { Alert, Button, Grid, List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 /**
  * this component contains the PWA installation
@@ -13,16 +13,17 @@ const PwaInstallation = () => {
   const [showInstallationInstruction, setShowInstallationInstruction] = useState<boolean>(false)
   const [prompt, setPrompt] = useState<Event | null>(null)
 
+  const browser = window.navigator.userAgent
+  const isPWA = window.matchMedia("(display-mode: standalone)").matches
+  const hasChrome = browser.includes("Chrome")
+  const hasSafari = browser.includes("Safari")
+
   useEffect(() => {
-    const browser = window.navigator.userAgent
-    const isPWA = window.matchMedia("(display-mode: standalone)").matches
-    const hasChrome = browser.includes("Chrome")
-    const hasSafari = browser.includes("Safari")
 
     // this is needed because chrome on mac contains both strings
     if (!isPWA && !hasChrome && hasSafari) {
       // safari
-      setShowInstallationInstruction(true)
+      setShowInstallButton(true)
     }
 
     const handleBeforeInstallPrompt = (event: Event) => {
@@ -43,10 +44,15 @@ const PwaInstallation = () => {
     }
   }, [])
 
-  const handleInstallClick = () => {
-    // @ts-expect-error actually we expect here the BeforeInstallPromptEvent but it is not supported by at least firefox
-    prompt?.prompt()
-  }
+  const handleInstallClick = useCallback(() => {
+    if (prompt) {
+      // @ts-expect-error actually we expect here the BeforeInstallPromptEvent but it is not supported by at least firefox
+      prompt?.prompt()
+    } else if (!hasChrome && hasSafari) {
+      setShowInstallButton(false)
+      setShowInstallationInstruction(true)
+    }
+  }, [prompt, hasChrome, hasSafari])
 
   const t = useTranslations('PWAInstallation')
   
