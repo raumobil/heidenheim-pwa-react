@@ -42,7 +42,7 @@ const PwaInstallation = () => {
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
     }
-  }, [])
+  }, [hasChrome, hasSafari, isPWA])
 
   const handleInstallClick = useCallback(() => {
     if (prompt) {
