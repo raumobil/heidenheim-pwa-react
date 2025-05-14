@@ -2,7 +2,7 @@
 
 import HeidenheimLogo from "@/components/HeidenheimLogo";
 import MainMenu from "@/components/MainMenu";
-import PWAInstallation from "@/components/PWAInstallation";
+import PwaInstallation from "@/components/PwaInstallation";
 import { Close, Menu } from "@mui/icons-material";
 import { AppBar, Drawer, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -86,7 +86,7 @@ const AppBarWithMenu = () => {
             <MainMenu onMenuItemClick={closeMenu} />
           </Grid>
         </Grid>
-        <PWAInstallation />
+        <PwaInstallation />
       </Drawer>
     </AppBar>
   )

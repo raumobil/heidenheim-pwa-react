@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 /**
  * this component contains the PWA installation
  */
-const PWAInstallation = () => {
+const PwaInstallation = () => {
   const [showInstallButton, setShowInstallButton] = useState<boolean>(false)
   const [showInstallationInstruction, setShowInstallationInstruction] = useState<boolean>(false)
   const [prompt, setPrompt] = useState<Event | null>(null)
@@ -95,4 +95,4 @@ const PWAInstallation = () => {
   )
 }
 
-export default PWAInstallation
+export default PwaInstallation
