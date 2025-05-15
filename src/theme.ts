@@ -16,6 +16,9 @@ const theme = createTheme({
     text: {
       dark: '#1A1A1A'
     },
+    info: {
+      main: '#005FCC'
+    },
     communication: {
       hyperlink: {
         main: '#005FCC'
