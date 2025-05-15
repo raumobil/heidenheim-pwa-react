@@ -15,6 +15,11 @@ const theme = createTheme({
     },
     text: {
       dark: '#1A1A1A'
+    },
+    communication: {
+      hyperlink: {
+        main: '#005FCC'
+      }
     }
   },
   typography: {
@@ -66,6 +71,14 @@ declare module '@mui/material/styles' {
 
   interface SimplePaletteColorOptions {
     dark?: string;
+  }
+
+  interface PaletteOptions {
+    communication?: {
+      hyperlink?: {
+        main?: string
+      }
+    }
   }
 
   interface TypographyVariants {
