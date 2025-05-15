@@ -37,10 +37,16 @@ const PwaInstallation = () => {
       }
     }
 
+    const handleAfterInstallPrompt = () => {
+      setShowInstallButton(false);
+    }
+
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+    window.addEventListener('appinstalled', handleAfterInstallPrompt)
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+      window.removeEventListener('appinstalled', handleAfterInstallPrompt)
     }
   }, [hasChrome, hasSafari, isPWA])
 
