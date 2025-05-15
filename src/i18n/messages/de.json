@@ -38,7 +38,9 @@
         "title": "So installierst Du die WebApp",
         "step1": "Tippe auf ",
         "step2": "wähle ",
-        "toHomeScreen": "Zum Home-Bildschirm "
+        "toHomeScreen": "Zum Home-Bildschirm ",
+        "iosShareIcon": "Teilen-Button",
+        "addBoxIconOutlinedIcon": "hinzufügen-Button"
       }
     }
   },

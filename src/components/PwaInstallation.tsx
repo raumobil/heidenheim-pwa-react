@@ -75,7 +75,7 @@ const PwaInstallation = () => {
                       <Typography color='textDark' variant='textLarge'>{t('install.instruction.step1')} </Typography>
                     </Grid>
                     <Grid>
-                      <Paper sx={{borderRadius: 0, display: 'inline-block', px: 0.5}}><IosShare /></Paper>
+                      <Paper sx={{borderRadius: 0, display: 'inline-block', px: 0.5}}><IosShare titleAccess={t('install.instruction.iosShareIcon')} /></Paper>
                     </Grid>
                   </Grid>
                 </ListItemText>
@@ -88,7 +88,7 @@ const PwaInstallation = () => {
                   <Paper sx={{borderRadius: 0, display: 'inline-block', p: 0.5}}>
                     <Grid container direction='row' alignItems='center' gap={0.5}>
                       <Typography variant='textLarge'>{t('install.instruction.toHomeScreen')}</Typography>
-                      <AddBoxOutlined />
+                      <AddBoxOutlined titleAccess={t('install.instruction.addBoxIconOutlinedIcon')} />
                     </Grid>
                   </Paper>
                 </ListItemText>
