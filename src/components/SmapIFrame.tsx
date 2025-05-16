@@ -1,8 +1,9 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import { parseDepartureMonitorId } from "@/util/smap"
+import { useLocale, useTranslations } from "next-intl"
+import { useSearchParams } from "next/navigation"
+import { useMemo } from "react"
 
 const SmapIFrame = ({
   smapUrl,
@@ -22,11 +23,10 @@ const SmapIFrame = ({
   // so that nextjs router in smap-next can handle the transition
   const dynamicSmapUrl = useMemo(() => {
     if (smapUrl) {
-      const url = new URL(smapUrl);
-      if (searchParams.get("departureMonitorId")) {
-        url.pathname = `${locale}${smapDepartureMonitorBasePath}/${searchParams.get(
-          "departureMonitorId"
-        )}`;
+      const url = new URL(smapUrl)
+      const departureMonitorId = parseDepartureMonitorId(searchParams.get('departureMonitorId'))
+      if (departureMonitorId) {
+        url.pathname = `${locale}${smapDepartureMonitorBasePath}/${departureMonitorId}`
       }
       return url;
     }

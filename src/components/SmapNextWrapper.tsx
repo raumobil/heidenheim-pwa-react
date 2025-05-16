@@ -1,7 +1,6 @@
 "use client";
 
 import { Button, Typography } from "@mui/material";
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 import SmapIFrame from "./SmapIFrame";
 import ScannerDialog from "./ScannerDialog";
@@ -21,14 +20,13 @@ const SmapNextWrapper = ({
   const searchParams = useSearchParams();
   const t = useTranslations("Home");
   const isScannerOpen = searchParams.get("isScannerOpen") === "true";
-  const [stationId, setStationId] = useState<string | undefined>();
 
   return (
     <>
       <ScannerDialog
         isOpen={isScannerOpen}
-        onScan={(stationId: string) => {
-          setStationId(stationId);
+        onScan={(id: string) => {
+          router.replace(`${pathname}?departureMonitorId=${id}`);
         }}
         onClose={() => {
           router.replace(`${pathname}`);

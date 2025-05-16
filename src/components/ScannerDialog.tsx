@@ -1,10 +1,4 @@
-import {
-  Dialog,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Box,
-} from "@mui/material";
+import { Dialog, AppBar, Toolbar, IconButton, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import { useState } from "react";
@@ -55,9 +49,22 @@ const ScannerDialog = ({
           const rawCode = detectedCodes[0].rawValue;
           // this a poc to show that we can decide if a QRCode is one of ours.
           // todo: replace with a correct condition, once we know what our QRCodes actually contain
-          if (rawCode.startsWith("raumo")) {
-            onScan(rawCode.replace("raumo:", ""));
-            onClose();
+          if (rawCode.startsWith(window.location.origin)) {
+            const departureMonitorId = new URL(rawCode).searchParams.get(
+              "departureMonitorId"
+            );
+            if (departureMonitorId) {
+              onScan(departureMonitorId);
+              onClose();
+            } else {
+              // ending up here means there is a broken QRCode out there.
+              // todo once we have Tracking:
+              // track this with as much information as possible
+              setMessage({
+                i18nKey: "error.generic",
+                severity: "error",
+              });
+            }
           } else {
             setMessage({
               i18nKey: "error.wrongQRCode",
@@ -69,7 +76,8 @@ const ScannerDialog = ({
           navigator.permissions.query({ name: "camera" }).then((result) => {
             // some Browsers, notably Firefox, don't do a great job implementing permission state and resulting errors
             // therefor missing camera permissions can still cause a generic error, instead of a camera permission error
-            const isPermissionDenied = result.state === "denied" || result.state === "prompt";
+            const isPermissionDenied =
+              result.state === "denied" || result.state === "prompt";
             if (isPermissionDenied) {
               setMessage({
                 i18nKey: "error.noPermission",
@@ -86,8 +94,7 @@ const ScannerDialog = ({
           });
         }}
         sound={false}
-      >
-      </Scanner>
+      ></Scanner>
       <Box
         sx={{
           position: "absolute",
