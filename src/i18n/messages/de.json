@@ -21,7 +21,16 @@
     "imprint": "Impressum",
     "language": "Sprache"
   },
+  "QrCodeScanner": {
+    "message": "Den QR-Code findest du am Haltestellen-Schild.",
+    "error": {
+      "wrongQRCode": "Bitte scanne einen gütligen QR-Code an einem Haltestellen-Schild.",
+      "noPermission": "Bitte erteile der Heidenheim-PWA die Berechtigung, auf die Kamera zuzugreifen, um einen QR-Code zu scannen.",
+      "generic": "Ein unbekannter Fehler ist aufgetreten."
+    }
+  },
   "Home": {
+    "qrCodeScanner": "QR-Code scannen",
     "iframe": {
       "title": "Karte"
     }
