@@ -55,10 +55,8 @@ const SmapNextWrapper = ({
           <Typography variant="labelMedium">{t("qrCodeScanner")}</Typography>
         </Button>
         <SmapIFrame
-          title={t("iframe.title")}
-          stationId={stationId}
-          baseURL={baseURL}
-          departureMonitorBasePath={departureMonitorBasePath}
+          smapUrl={baseURL}
+          smapDepartureMonitorBasePath={departureMonitorBasePath}
         />
       </>
     </>
