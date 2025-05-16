@@ -9,20 +9,26 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import QrCodeIcon from "@mui/icons-material/QrCode";
 
-const SmapNextWrapper = ({ baseURL }: { baseURL: string }) => {
+const SmapNextWrapper = ({
+  baseURL,
+  departureMonitorBasePath,
+}: {
+  baseURL: string;
+  departureMonitorBasePath: string;
+}) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const t = useTranslations("Home");
   const isScannerOpen = searchParams.get("isScannerOpen") === "true";
-  const [stationId, setStaionId] = useState<string | undefined>();
+  const [stationId, setStationId] = useState<string | undefined>();
 
   return (
     <>
       <ScannerDialog
         isOpen={isScannerOpen}
         onScan={(stationId: string) => {
-          setStaionId(stationId);
+          setStationId(stationId);
         }}
         onClose={() => {
           router.replace(`${pathname}`);
@@ -52,6 +58,7 @@ const SmapNextWrapper = ({ baseURL }: { baseURL: string }) => {
           title={t("iframe.title")}
           stationId={stationId}
           baseURL={baseURL}
+          departureMonitorBasePath={departureMonitorBasePath}
         />
       </>
     </>

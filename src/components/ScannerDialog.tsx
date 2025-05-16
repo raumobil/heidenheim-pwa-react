@@ -24,7 +24,7 @@ type messagesType = {
 
 const ScannerDialog = ({
   isOpen,
-  onClose: handleClose,
+  onClose,
   onScan,
 }: {
   isOpen: boolean;
@@ -43,7 +43,7 @@ const ScannerDialog = ({
           <IconButton
             edge="start"
             color="inherit"
-            onClick={handleClose}
+            onClick={onClose}
             aria-label="close"
           >
             <CloseIcon />
@@ -59,7 +59,7 @@ const ScannerDialog = ({
           // todo: replace with a correct condition, once we know what our QRCodes actually contain
           if (rawCode.startsWith("raumo")) {
             onScan(rawCode.replace("raumo:", ""));
-            handleClose();
+            onClose();
           } else {
             setMessage({
               i18nKey: "error.wrongQRCode",

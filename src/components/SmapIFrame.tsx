@@ -1,17 +1,24 @@
 "use client";
 
+import { useLocale } from "next-intl";
+
 const SmapIFrame = ({
   title,
   baseURL,
+  departureMonitorBasePath,
   stationId,
 }: {
   title: string;
   baseURL: string;
+  departureMonitorBasePath: string;
   stationId?: string;
 }) => {
+  const locale = useLocale();
   const src =
     baseURL +
-    (stationId ? "/en/poi/api/dataSource_raumo_trias_grid/" + stationId : "");
+    (stationId
+      ? `/${locale}` + departureMonitorBasePath + `/${stationId}`
+      : "");
   return (
     <iframe
       title={title}
