@@ -29,7 +29,7 @@ const SmapNextWrapper = ({
           router.replace(`${pathname}?departureMonitorId=${id}`);
         }}
         onClose={() => {
-          router.replace(`${pathname}`);
+          // router.replace(`${pathname}`);
         }}
       />
       <>
