@@ -16,8 +16,7 @@ const MenuItem = ({ text, href, onClick } : { text: string, href?: string, onCli
       <ListItemButton
         dense
         disabled={!href}
-        // typescript does not allow undefined or null
-        href={href ?? ''}
+        {...(href && {href: href})}
         onClick={onClick}
         LinkComponent={Link}
       >
