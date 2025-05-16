@@ -53,8 +53,6 @@ const ScannerDialog = ({
       <Scanner
         onScan={(detectedCodes) => {
           const rawCode = detectedCodes[0].rawValue;
-          // setStaionId("de:08135:124");
-
           // this a poc to show that we can decide if a QRCode is one of ours.
           // todo: replace with a correct condition, once we know what our QRCodes actually contain
           if (rawCode.startsWith("raumo")) {
