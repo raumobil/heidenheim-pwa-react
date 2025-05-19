@@ -132,13 +132,13 @@ const ScannerDialog = ({
         onError={onError}
         sound={false}
         components={{
-          torch: false
+          torch: false,
         }}
       />
       <Box
         sx={{
           position: "absolute",
-          top: "80%",
+          bottom: "50px",
           left: "50%",
           transform: "translate(-50%, 0)",
         }}
