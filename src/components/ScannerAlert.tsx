@@ -16,19 +16,19 @@ const ScannerAlert = ({ message: message, severity }: messagesType) => {
         return {
           icon: <InfoIcon sx={{ color: "smap.primary.main" }} />,
           additionalTextStyle: {},
-          additionalAlertStyle: { background: "#E7F6E6" },
+          additionalAlertStyle: { backgroundColor: "#E7F6E6" },
         };
       case "error":
         return {
           icon: <ErrorIcon />,
           additionalTextStyle: {},
-          additionalAlertStyle: { background: "#FEE9E6" },
+          additionalAlertStyle: { backgroundColor: "#FEE9E6" },
         };
       case "warning":
         return {
           icon: <WarningIcon />,
           additionalTextStyle: {},
-          additionalAlertStyle: { background: "#FDF1E6" },
+          additionalAlertStyle: { backgroundColor: "#FDF1E6" },
         };
       default:
         return {
