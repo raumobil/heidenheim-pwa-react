@@ -1,7 +1,15 @@
-import { Dialog, AppBar, Toolbar, IconButton, Box } from "@mui/material";
+import {
+  Dialog,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Box,
+  Grid,
+  Typography,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { Scanner } from "@yudiel/react-qr-scanner";
-import { useState } from "react";
+import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
+import { useCallback, useState } from "react";
 import { useTranslations } from "next-intl";
 import ScannerAlert from "./ScannerAlert";
 
@@ -30,68 +38,98 @@ const ScannerDialog = ({
     i18nKey: "message",
     severity: "info",
   });
+
+  const onScanCallback = useCallback(
+    (detectedCodes: IDetectedBarcode[]) => {
+      const rawCode = detectedCodes[0].rawValue;
+      // this a poc to show that we can decide if a QRCode is one of ours.
+      // todo: replace with a correct condition, once we know what our QRCodes actually contain
+      if (rawCode.startsWith(window.location.origin)) {
+        const departureMonitorId = new URL(rawCode).searchParams.get(
+          "departureMonitorId"
+        );
+        if (departureMonitorId) {
+          onScan(departureMonitorId);
+        } else {
+          // ending up here means there is a broken QRCode out there.
+          // todo once we have Tracking:
+          // track this with as much information as possible
+          setMessage({
+            i18nKey: "error.generic",
+            severity: "error",
+          });
+        }
+      } else {
+        setMessage({
+          i18nKey: "error.wrongQrCode",
+          severity: "warning",
+        });
+      }
+    },
+    [onScan]
+  );
+
+  const onError = useCallback(() => {
+    navigator.permissions.query({ name: "camera" }).then((result) => {
+      // some Browsers, notably Firefox, don't do a great job implementing permission state and resulting errors
+      // therefor missing camera permissions can still cause a generic error, instead of a camera permission error
+      const isPermissionDenied =
+        result.state === "denied" || result.state === "prompt";
+      if (isPermissionDenied) {
+        setMessage({
+          i18nKey: "error.noPermission",
+          severity: "warning",
+        });
+      } else {
+        // todo once we have Tracking:
+        // track what caused the generic error, so know if we can and want to add more Error messages
+        setMessage({
+          i18nKey: "error.generic",
+          severity: "error",
+        });
+      }
+    });
+  }, []);
+
   return (
     <Dialog open={isOpen} fullScreen={true}>
-      <AppBar sx={{ position: "relative" }}>
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            onClick={onClose}
-            aria-label="close"
+      <AppBar
+        sx={{ position: "relative", backgroundColor: "background.light" }}
+      >
+        <Toolbar variant="dense">
+          <Grid
+            container
+            direction="row"
+            size="grow"
+            alignItems="center"
+            spacing={2}
           >
-            <CloseIcon />
-          </IconButton>
+            <Grid size="grow">
+              <Typography
+                color="text.dark"
+                variant="titleLarge"
+                component="h1"
+                textAlign={"center"}
+              >
+                {t("title")}
+              </Typography>
+            </Grid>
+            <Grid size="auto">
+              <IconButton
+                edge="start"
+                color="inherit"
+                onClick={onClose}
+                aria-label={t("aria.close")}
+              >
+                <CloseIcon sx={{ color: "text.dark" }} />
+              </IconButton>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
       <Scanner
-        onScan={(detectedCodes) => {
-          const rawCode = detectedCodes[0].rawValue;
-          // this a poc to show that we can decide if a QRCode is one of ours.
-          // todo: replace with a correct condition, once we know what our QRCodes actually contain
-          if (rawCode.startsWith(window.location.origin)) {
-            const departureMonitorId = new URL(rawCode).searchParams.get(
-              "departureMonitorId"
-            );
-            if (departureMonitorId) {
-              onScan(departureMonitorId);
-            } else {
-              // ending up here means there is a broken QRCode out there.
-              // todo once we have Tracking:
-              // track this with as much information as possible
-              setMessage({
-                i18nKey: "error.generic",
-                severity: "error",
-              });
-            }
-          } else {
-            setMessage({
-              i18nKey: "error.wrongQrCode",
-              severity: "warning",
-            });
-          }
-        }}
-        onError={() => {
-          navigator.permissions.query({ name: "camera" }).then((result) => {
-            // some Browsers, notably Firefox, don't do a great job implementing permission state and resulting errors
-            // therefor missing camera permissions can still cause a generic error, instead of a camera permission error
-            const isPermissionDenied =
-              result.state === "denied" || result.state === "prompt";
-            if (isPermissionDenied) {
-              setMessage({
-                i18nKey: "error.noPermission",
-                severity: "warning",
-              });
-            } else {
-              // todo once we have Tracking:
-              // track what caused the generic error, so know if we can and want to add more Error messages
-              setMessage({
-                i18nKey: "error.generic",
-                severity: "error",
-              });
-            }
-          });
-        }}
+        onScan={onScanCallback}
+        onError={onError}
         sound={false}
       ></Scanner>
       <Box
