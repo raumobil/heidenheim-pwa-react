@@ -7,7 +7,7 @@ import { MouseEventHandler } from "react"
 /**
  * a single menu item
  */
-const MenuItem = ({ text, href, onClick } : { text: string, href?: string, onClick: MouseEventHandler }) => {
+const MenuItem = ({ text, href, onClick } : { text: string, href: string, onClick: MouseEventHandler }) => {
   const pathname = usePathname()
   const isActive = href === pathname
 
@@ -16,8 +16,7 @@ const MenuItem = ({ text, href, onClick } : { text: string, href?: string, onCli
       <ListItemButton
         dense
         disabled={!href}
-        // typescript does not allow undefined or null
-        href={href ?? ''}
+        href={href}
         onClick={onClick}
         LinkComponent={Link}
       >
@@ -47,10 +46,12 @@ const MainMenu = ({ onMenuItemClick } : { onMenuItemClick: MouseEventHandler }) 
   return (
     <List>
       <MenuItem text={t('map')} href="/" onClick={onMenuItemClick} />
-      <MenuItem text={t('qrCodeScanner')} onClick={onMenuItemClick} />
+      <MenuItem text={t('qrCodeScanner')} href="/?isScannerOpen=true" onClick={onMenuItemClick} />
       <MenuItem text={t('legal')} href="/legal" onClick={onMenuItemClick} />
       <MenuItem text={t('accessibility')} href="/accessibility" onClick={onMenuItemClick} />
+      {/* @ts-expect-error missing href until page Exists  */}
       <MenuItem text={t('imprint')} onClick={onMenuItemClick} />
+      {/* @ts-expect-error missing href until page Exists */}
       <MenuItem text={t('language')} onClick={onMenuItemClick} />
     </List>
   )

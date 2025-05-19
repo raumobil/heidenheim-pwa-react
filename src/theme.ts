@@ -14,7 +14,11 @@ const theme = createTheme({
       main: '#194873'
     },
     text: {
-      dark: '#1A1A1A'
+      dark: '#1A1A1A',
+      light: '#FAFAFA'
+    },
+    background: {
+      light: '#FDFDFD'
     },
     info: {
       main: '#005FCC'
@@ -22,6 +26,11 @@ const theme = createTheme({
     communication: {
       hyperlink: {
         main: '#005FCC'
+      }
+    },
+    smap: {
+      primary: {
+        main: '#1D8F0C'
       }
     }
   },
@@ -70,6 +79,11 @@ export default theme
 declare module '@mui/material/styles' {
   interface TypeText {
     dark?: string;
+    light?: string;
+  }
+
+  interface TypeBackground {
+    light?: string
   }
 
   interface SimplePaletteColorOptions {
@@ -79,7 +93,12 @@ declare module '@mui/material/styles' {
   interface PaletteOptions {
     communication?: {
       hyperlink?: {
-        main?: string
+        main?: string;
+      }
+    }
+    smap?: {
+      primary?: {
+        main?: string;
       }
     }
   }

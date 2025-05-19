@@ -1,17 +1,15 @@
-import { useTranslations } from "next-intl";
+import SmapNextWrapper from "@/components/SmapNextWrapper";
 
 /**
  * this page renders a smap inside an iframe
  */
 export default function Home() {
-  const t = useTranslations('Home')
-
   return (
-    <iframe
-      title={t('iframe.title')}
-      src={process.env.SMAP_URL}
-      style={{ width: "100%", height: "100%", border: 0 }}
-      allow="geolocation"
-    ></iframe>
+    <SmapNextWrapper
+      // @ts-expect-error there is no reasonable fallback url
+      baseURL={process.env.SMAP_URL}
+      // @ts-expect-error there is no reasonable fallback path
+      departureMonitorBasePath={process.env.SMAP_DEPARTURE_MONITOR_BASE_PATH}
+    />
   );
 }
