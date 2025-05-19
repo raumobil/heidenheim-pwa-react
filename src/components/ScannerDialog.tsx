@@ -131,7 +131,10 @@ const ScannerDialog = ({
         onScan={onScanCallback}
         onError={onError}
         sound={false}
-      ></Scanner>
+        components={{
+          torch: false
+        }}
+      />
       <Box
         sx={{
           position: "absolute",
