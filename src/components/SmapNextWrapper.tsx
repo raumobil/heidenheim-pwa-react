@@ -29,34 +29,32 @@ const SmapNextWrapper = ({
           router.replace(`${pathname}?departureMonitorId=${id}`);
         }}
         onClose={() => {
-          // router.replace(`${pathname}`);
+          router.replace(`${pathname}`);
         }}
       />
-      <>
-        <Button
-          size="large"
-          sx={{
-            position: "absolute",
-            // 72px to align with the Routing-Button in our Smap
-            bottom: "72px",
-            left: "50%",
-            boxShadow: "0px 1px 3px 0px #0000004D, 0px 4px 8px 3px #00000026",
-            transform: "translate(-50%, 0)",
-            backgroundColor: "background.light",
-            color: "smap.primary.main",
-          }}
-          onClick={() => {
-            router.replace(`${pathname}?isScannerOpen=true`);
-          }}
-          startIcon={<QrCodeIcon />}
-        >
-          <Typography variant="labelMedium">{t("qrCodeScanner")}</Typography>
-        </Button>
-        <SmapIFrame
-          smapUrl={baseURL}
-          smapDepartureMonitorBasePath={departureMonitorBasePath}
-        />
-      </>
+      <Button
+        size="large"
+        sx={{
+          position: "absolute",
+          // 72px to align with the Routing-Button in our Smap
+          bottom: "72px",
+          left: "50%",
+          boxShadow: "0px 1px 3px 0px #0000004D, 0px 4px 8px 3px #00000026",
+          transform: "translate(-50%, 0)",
+          backgroundColor: "background.light",
+          color: "smap.primary.main",
+        }}
+        onClick={() => {
+          router.replace(`${pathname}?isScannerOpen=true`);
+        }}
+        startIcon={<QrCodeIcon />}
+      >
+        <Typography variant="labelMedium">{t("qrCodeScanner")}</Typography>
+      </Button>
+      <SmapIFrame
+        smapUrl={baseURL}
+        smapDepartureMonitorBasePath={departureMonitorBasePath}
+      />
     </>
   );
 };

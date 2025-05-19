@@ -9,7 +9,7 @@ type messagesType = {
   // maybe find a way to get Types from directly i18n
   i18nKey:
     | "message"
-    | "error.wrongQRCode"
+    | "error.wrongQrCode"
     | "error.noPermission"
     | "error.generic";
   // and from Mui
@@ -55,7 +55,6 @@ const ScannerDialog = ({
             );
             if (departureMonitorId) {
               onScan(departureMonitorId);
-              onClose();
             } else {
               // ending up here means there is a broken QRCode out there.
               // todo once we have Tracking:
@@ -67,7 +66,7 @@ const ScannerDialog = ({
             }
           } else {
             setMessage({
-              i18nKey: "error.wrongQRCode",
+              i18nKey: "error.wrongQrCode",
               severity: "warning",
             });
           }
