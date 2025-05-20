@@ -34,9 +34,5 @@
     "lint-staged": "^16.0.0",
     "prettier": "3.5.3",
     "typescript": "^5"
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
   }
 }
