@@ -1,12 +1,11 @@
-import { Alert, Typography } from "@mui/material";
+import { Alert, AlertProps, Typography } from "@mui/material";
 import WarningIcon from "@mui/icons-material/Warning";
 import ErrorIcon from "@mui/icons-material/Error";
 import InfoIcon from "@mui/icons-material/Info";
 
 type messagesType = {
   message: string;
-  // and from Mui
-  severity: "error" | "info" | "success" | "warning";
+  severity: AlertProps['severity']
 };
 const ScannerAlert = ({ message: message, severity }: messagesType) => {
   return (
