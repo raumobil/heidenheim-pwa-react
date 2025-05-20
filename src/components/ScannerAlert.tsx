@@ -1,12 +1,12 @@
-import { Alert, AlertProps, Typography } from "@mui/material";
-import WarningIcon from "@mui/icons-material/Warning";
-import ErrorIcon from "@mui/icons-material/Error";
-import InfoIcon from "@mui/icons-material/Info";
+import { Alert, AlertProps, Typography } from '@mui/material'
+import WarningIcon from '@mui/icons-material/Warning'
+import ErrorIcon from '@mui/icons-material/Error'
+import InfoIcon from '@mui/icons-material/Info'
 
 type messagesType = {
-  message: string;
+  message: string
   severity: AlertProps['severity']
-};
+}
 const ScannerAlert = ({ message: message, severity }: messagesType) => {
   return (
     <Alert
@@ -17,14 +17,11 @@ const ScannerAlert = ({ message: message, severity }: messagesType) => {
       }}
       severity={severity}
     >
-      <Typography
-        variant="textLargeColored"
-        sx={{ color: "text.dark" }}
-      >
+      <Typography variant='textLargeColored' sx={{ color: 'text.dark' }}>
         {message}
       </Typography>
     </Alert>
-  );
-};
+  )
+}
 
-export default ScannerAlert;
+export default ScannerAlert

@@ -1,4 +1,4 @@
-import SmapNextWrapper from "@/components/SmapNextWrapper";
+import SmapNextWrapper from '@/components/SmapNextWrapper'
 
 /**
  * this page renders a smap inside an iframe
@@ -11,5 +11,5 @@ export default function Home() {
       // @ts-expect-error there is no reasonable fallback path
       departureMonitorBasePath={process.env.SMAP_DEPARTURE_MONITOR_BASE_PATH}
     />
-  );
+  )
 }

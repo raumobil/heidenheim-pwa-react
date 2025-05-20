@@ -1,12 +1,12 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
-import { CssBaseline, ThemeProvider } from "@mui/material"
-import theme from "@/theme"
-import AppBarWithMenu from "@/components/AppBarWithMenu"
-import { hasLocale, NextIntlClientProvider } from "next-intl"
-import { notFound } from "next/navigation"
-import { routing } from "@/i18n/routing"
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import theme from '@/theme'
+import AppBarWithMenu from '@/components/AppBarWithMenu'
+import { hasLocale, NextIntlClientProvider } from 'next-intl'
+import { notFound } from 'next/navigation'
+import { routing } from '@/i18n/routing'
 
 const inter = Inter({
   weight: ['300', '400', '600', '700'],
@@ -16,20 +16,20 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "appgefahren",
-};
+  title: 'appgefahren',
+}
 
 export default async function LocaleLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode
-  params: Promise<{locale: string}>
+  params: Promise<{ locale: string }>
 }>) {
   // Ensure that the incoming `locale` is valid
-  const {locale} = await params;
+  const { locale } = await params
   if (!hasLocale(routing.locales, locale)) {
-    notFound();
+    notFound()
   }
 
   return (
