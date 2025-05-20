@@ -69,7 +69,7 @@ const ScannerDialog = ({
     [onScan]
   );
 
-  const onError = useCallback(() => {
+  const onErrorCallback = useCallback(() => {
     navigator.permissions.query({ name: "camera" }).then((result) => {
       // some Browsers, notably Firefox, don't do a great job implementing permission state and resulting errors
       // therefor missing camera permissions can still cause a generic error, instead of a camera permission error
@@ -90,6 +90,14 @@ const ScannerDialog = ({
       }
     });
   }, []);
+
+  const onCloseCallback = useCallback(() => {
+    onClose();
+    setMessage({
+      i18nKey: "message",
+      severity: "info",
+    });
+  }, [onClose]);
 
   return (
     <Dialog open={isOpen} fullScreen={true}>
@@ -118,7 +126,7 @@ const ScannerDialog = ({
               <IconButton
                 edge="start"
                 color="inherit"
-                onClick={onClose}
+                onClick={onCloseCallback}
                 aria-label={t("aria.close")}
               >
                 <CloseIcon sx={{ color: "text.dark" }} />
@@ -129,7 +137,7 @@ const ScannerDialog = ({
       </AppBar>
       <Scanner
         onScan={onScanCallback}
-        onError={onError}
+        onError={onErrorCallback}
         sound={false}
         components={{
           torch: false,
