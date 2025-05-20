@@ -6,6 +6,7 @@ import {
   Box,
   Grid,
   Typography,
+  AlertProps,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { IDetectedBarcode, Scanner } from "@yudiel/react-qr-scanner";
@@ -20,8 +21,7 @@ type messagesType = {
     | "error.wrongQrCode"
     | "error.noPermission"
     | "error.generic";
-  // and from Mui
-  severity: "error" | "info" | "success" | "warning";
+  severity: AlertProps['severity']
 };
 
 const ScannerDialog = ({

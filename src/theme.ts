@@ -21,7 +21,13 @@ const theme = createTheme({
       light: '#FDFDFD'
     },
     info: {
-      main: '#005FCC'
+      main: '#1D8F0C'
+    },
+    warning: {
+      main: '#E67300'
+    },
+    error: {
+      main: '#F52300'
     },
     communication: {
       hyperlink: {

@@ -71,7 +71,20 @@ const PwaInstallation = () => {
       </Grid>}
       {showInstallationInstruction && <Grid px={2} container direction={'row'}>
         <Grid size='grow'>
-          <Alert icon={false} severity="info" sx={{borderRadius: '8px', px: 1.5, py: 1, color: 'text.dark', width: '100%'}}>
+          <Alert
+            icon={false}
+            severity="info"
+            sx={(theme) => ({
+              borderRadius: '8px', 
+              px: 1.5, 
+              py: 1,
+              color: 'text.dark',
+              width: '100%',
+              // MUI docs recommends use of css color-mix https://mui.com/material-ui/migration/upgrade-to-v7/#theme-behavior-changes
+              // @ts-expect-error non standard color not defined in typescript
+              backgroundColor: `color-mix(in srgb, ${theme.palette.communication.hyperlink.main}, transparent 95%)`
+            })}
+          >
             <Typography color='textDark' variant='textLargeColored'>{t('install.instruction.title')}</Typography>
             <List sx={{ listStyle: "decimal", pl: 2.5 }} component={'ol'}>
               <ListItem sx={{ display: "list-item", paddingX: 0, paddingY: 0.5 }}>
