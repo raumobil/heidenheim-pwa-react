@@ -1,6 +1,6 @@
-import {routing} from '@/i18n/routing'
+import { routing } from '@/i18n/routing'
 import messages from '@/i18n/messages/de.json'
- 
+
 // https://next-intl.dev/docs/workflows/typescript
 declare module 'next-intl' {
   interface AppConfig {

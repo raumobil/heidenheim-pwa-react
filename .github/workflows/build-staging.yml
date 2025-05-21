@@ -1,8 +1,8 @@
-name: "build & deploy"
+name: 'build & deploy'
 on:
   push:
     branches:
-      - "main"
+      - 'main'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  RAUMO_PROJECT: "heidenheim-pwa"
+  RAUMO_PROJECT: 'heidenheim-pwa'
 
 jobs:
   build-image:
@@ -20,7 +20,7 @@ jobs:
     runs-on: selfhosted-linux
     environment:
       name: staging
-      url: "https://heidenheim-pwa.staging.raumo.de"
+      url: 'https://heidenheim-pwa.staging.raumo.de'
     steps:
       - name: checkout repo
         uses: actions/checkout@v4

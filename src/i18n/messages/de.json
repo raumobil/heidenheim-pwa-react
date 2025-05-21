@@ -22,7 +22,7 @@
     "language": "Sprache"
   },
   "QrCodeScanner": {
-    "aria": {"close": "schließen"},
+    "aria": { "close": "schließen" },
     "message": "Den QR-Code findest du am Haltestellen-Schild.",
     "title": "QR-Code scannen",
     "error": {

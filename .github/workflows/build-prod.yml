@@ -8,7 +8,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  RAUMO_PROJECT: "heidenheim-pwa"
+  RAUMO_PROJECT: 'heidenheim-pwa'
 
 jobs:
   ci-checks:
@@ -25,9 +25,9 @@ jobs:
         run: npm ci
       - name: 'lint'
         run: npm run lint -- --max-warnings 0
-#  jest is not configured in this project
-#      - name: 'test'
-#        run: npm run test:ci -- --passWithNoTests
+      #  jest is not configured in this project
+      #      - name: 'test'
+      #        run: npm run test:ci -- --passWithNoTests
       - name: 'build'
         run: npm run build
 
@@ -35,8 +35,8 @@ jobs:
     runs-on: selfhosted-linux
     environment:
       name: prod
-      url: "https://heidenheim-pwa.prod.raumo.de"
-    needs: [ ci-checks]
+      url: 'https://heidenheim-pwa.prod.raumo.de'
+    needs: [ci-checks]
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
