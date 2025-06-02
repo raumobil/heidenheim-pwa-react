@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Typography } from '@mui/material'
+import { Button, Grid, Typography } from '@mui/material'
 import { useTranslations } from 'next-intl'
 import SmapIFrame from './SmapIFrame'
 import ScannerDialog from './ScannerDialog'
@@ -32,30 +32,33 @@ const SmapNextWrapper = ({
           router.replace(`${pathname}`)
         }}
       />
-
-      <SmapIFrame
-        smapUrl={baseURL}
-        smapDepartureMonitorBasePath={departureMonitorBasePath}
-      />
-      <Button
-        size='large'
-        sx={{
-          width: '100%',
-          height: '64px',
-          left: '50%',
-          transform: 'translate(-50%, 0)',
-          backgroundColor: 'background.light',
-          color: 'text.dark',
-          textTransform: 'none',
-          borderRadius: 0,
-        }}
-        onClick={() => {
-          router.replace(`${pathname}?isScannerOpen=true`)
-        }}
-        startIcon={<QrCodeScannerIcon />}
-      >
-        <Typography variant='labelMedium'>{t('qrCodeScanner')}</Typography>
-      </Button>
+      <Grid container direction='column' height='100%'>
+        <Grid size='grow'>
+          <SmapIFrame
+            smapUrl={baseURL}
+            smapDepartureMonitorBasePath={departureMonitorBasePath}
+          />
+        </Grid>
+        <Grid size='auto'>
+          <Button
+            size='large'
+            fullWidth
+            sx={{
+              height: '64px',
+              backgroundColor: 'background.light',
+              color: 'text.dark',
+              textTransform: 'none',
+              borderRadius: 0,
+            }}
+            onClick={() => {
+              router.replace(`${pathname}?isScannerOpen=true`)
+            }}
+            startIcon={<QrCodeScannerIcon />}
+          >
+            <Typography variant='labelMedium'>{t('qrCodeScanner')}</Typography>
+          </Button>
+        </Grid>
+      </Grid>
     </>
   )
 }

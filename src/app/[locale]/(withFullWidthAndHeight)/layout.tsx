@@ -11,12 +11,7 @@ const FullWidthAndHeightLayout = ({
   return (
     <Box
       // 48px is the height of the AppBar (with dense prop)
-      sx={{
-        height: 'calc(100dvh - 48px)',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
+      sx={{ height: 'calc(100dvh - 48px)', overflow: 'hidden' }}
     >
       {children}
     </Box>
