@@ -39,7 +39,11 @@ const SmapIFrame = ({
       title={t('iframe.title')}
       // @ts-expect-error there is no reasonable fallback url
       src={dynamicSmapUrl}
-      style={{ width: '100%', height: '100%', border: 0 }}
+      style={{
+        width: '100%',
+        height: `calc(100% - 64px)`,
+        border: 0,
+      }} // 64px is set for the QS-Scanner
       allow='geolocation'
     ></iframe>
   )
