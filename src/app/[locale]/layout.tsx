@@ -20,6 +20,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
+  // viewportFit is required to make the css variable safe-area-inset usable
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/env#usage
   viewportFit: 'cover',
 }
 
