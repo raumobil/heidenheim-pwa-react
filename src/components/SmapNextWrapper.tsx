@@ -39,7 +39,10 @@ const SmapNextWrapper = ({
             smapDepartureMonitorBasePath={departureMonitorBasePath}
           />
         </Grid>
-        <Grid size='auto'>
+        <Grid
+          size='auto'
+          sx={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}
+        >
           <Button
             size='large'
             fullWidth
