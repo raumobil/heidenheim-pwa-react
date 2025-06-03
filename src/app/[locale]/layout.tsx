@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
 import { CssBaseline, ThemeProvider } from '@mui/material'
@@ -17,6 +17,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'appgefahren',
+}
+
+export const viewport: Viewport = {
+  // viewportFit is required to make the css variable safe-area-inset usable
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/env#usage
+  viewportFit: 'cover',
 }
 
 export default async function LocaleLayout({
