@@ -21,9 +21,10 @@ const MenuItem = ({
 
   const { trackEvent } = useMatomo()
 
-  const handleClick = () => {
+  // eslint-disable-next-line
+  const handleClick = (event: any) => {
     trackEvent('MenuItem', 'click', text)
-    console.log(onClick)
+    onClick(event)
   }
 
   return (
