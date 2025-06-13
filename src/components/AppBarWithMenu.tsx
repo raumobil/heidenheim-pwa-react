@@ -12,6 +12,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
+import useMatomo from '@/components/Matomo/useMatomo'
 import { useTranslations } from 'next-intl'
 import { useCallback, useState } from 'react'
 
@@ -19,11 +20,13 @@ import { useCallback, useState } from 'react'
  * this component contains the main navigation
  */
 const AppBarWithMenu = () => {
+  const { trackEvent } = useMatomo()
   const [menuOpen, setMenuOpen] = useState(false)
 
   const openMenu = useCallback(() => {
+    trackEvent('AppBarWithMenu', 'open', 'menu')
     setMenuOpen(true)
-  }, [])
+  }, [trackEvent])
 
   const closeMenu = useCallback(() => {
     setMenuOpen(false)
@@ -72,7 +75,10 @@ const AppBarWithMenu = () => {
       <Drawer
         anchor='right'
         open={menuOpen}
-        onClose={closeMenu}
+        onClose={() => {
+          trackEvent('AppBarWithMenu', 'close', 'menu')
+          closeMenu()
+        }}
         ModalProps={{
           keepMounted: true,
         }}

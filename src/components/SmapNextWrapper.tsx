@@ -7,6 +7,7 @@ import ScannerDialog from './ScannerDialog'
 import { usePathname, useRouter } from '@/i18n/navigation'
 import { useSearchParams } from 'next/navigation'
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner'
+import useMatomo from '@/components/Matomo/useMatomo'
 
 const SmapNextWrapper = ({
   baseURL,
@@ -20,6 +21,8 @@ const SmapNextWrapper = ({
   const searchParams = useSearchParams()
   const t = useTranslations('Home')
   const isScannerOpen = searchParams.get('isScannerOpen') === 'true'
+
+  const { trackEvent } = useMatomo()
 
   return (
     <>
@@ -54,6 +57,7 @@ const SmapNextWrapper = ({
               borderRadius: 0,
             }}
             onClick={() => {
+              trackEvent('SmapNextWrapper', 'click button', 'qr scanner')
               router.replace(`${pathname}?isScannerOpen=true`)
             }}
             startIcon={<QrCodeScannerIcon />}

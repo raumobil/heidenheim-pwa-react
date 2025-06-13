@@ -1,5 +1,6 @@
 import { Link, usePathname } from '@/i18n/navigation'
 import { List, ListItem, ListItemButton, ListItemText } from '@mui/material'
+import useMatomo from '@/components/Matomo/useMatomo'
 import { useTranslations } from 'next-intl'
 import { MouseEventHandler } from 'react'
 
@@ -18,13 +19,21 @@ const MenuItem = ({
   const pathname = usePathname()
   const isActive = href === pathname
 
+  const { trackEvent } = useMatomo()
+
+  // eslint-disable-next-line
+  const handleClick = (event: any) => {
+    trackEvent('MenuItem', 'click', text)
+    onClick(event)
+  }
+
   return (
     <ListItem>
       <ListItemButton
         dense
         disabled={!href}
         href={href}
-        onClick={onClick}
+        onClick={handleClick}
         LinkComponent={Link}
       >
         <ListItemText

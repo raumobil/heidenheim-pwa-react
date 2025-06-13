@@ -7,6 +7,7 @@ import AppBarWithMenu from '@/components/AppBarWithMenu'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
+import MatomoTracking from '@/components/Matomo/MatomoTracking'
 
 const inter = Inter({
   weight: ['300', '400', '600', '700'],
@@ -50,6 +51,14 @@ export default async function LocaleLayout({
               <CssBaseline />
               <AppBarWithMenu />
               {children}
+              <MatomoTracking
+                // @ts-expect-error prevent undefined env variable
+                url={process.env.MATOMO_URL}
+                // @ts-expect-error prevent undefined env variable
+                siteId={process.env.MATOMO_ID}
+                // @ts-expect-error this is a server side environment variable that can be changed at runtime in docker
+                matomoEnv={process.env.MATOMO_ENV}
+              />
             </ThemeProvider>
           </AppRouterCacheProvider>
         </NextIntlClientProvider>

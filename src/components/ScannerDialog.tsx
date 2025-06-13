@@ -13,6 +13,7 @@ import { IDetectedBarcode, Scanner } from '@yudiel/react-qr-scanner'
 import { useCallback, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import ScannerAlert from './ScannerAlert'
+import useMatomo from '@/components/Matomo/useMatomo'
 
 type messagesType = {
   // maybe find a way to get Types from directly i18n
@@ -38,9 +39,11 @@ const ScannerDialog = ({
     i18nKey: 'message',
     severity: 'info',
   })
+  const { trackEvent } = useMatomo()
 
   const onScanCallback = useCallback(
     (detectedCodes: IDetectedBarcode[]) => {
+      trackEvent('ScannerDialog', 'scan')
       const rawCode = detectedCodes[0].rawValue
       // this a poc to show that we can decide if a QRCode is one of ours.
       // todo: replace with a correct condition, once we know what our QRCodes actually contain
@@ -54,6 +57,7 @@ const ScannerDialog = ({
           // ending up here means there is a broken QRCode out there.
           // todo once we have Tracking:
           // track this with as much information as possible
+          trackEvent('ScannerDialog', 'no departure monitor id', 'error')
           setMessage({
             i18nKey: 'error.generic',
             severity: 'error',
@@ -66,7 +70,7 @@ const ScannerDialog = ({
         })
       }
     },
-    [onScan]
+    [onScan, trackEvent]
   )
 
   const onErrorCallback = useCallback(() => {
@@ -83,21 +87,23 @@ const ScannerDialog = ({
       } else {
         // todo once we have Tracking:
         // track what caused the generic error, so know if we can and want to add more Error messages
+        trackEvent('ScannerDialog', 'unknown', 'error')
         setMessage({
           i18nKey: 'error.generic',
           severity: 'error',
         })
       }
     })
-  }, [])
+  }, [trackEvent])
 
   const onCloseCallback = useCallback(() => {
+    trackEvent('ScannerDialog', 'close')
     onClose()
     setMessage({
       i18nKey: 'message',
       severity: 'info',
     })
-  }, [onClose])
+  }, [onClose, trackEvent])
 
   return (
     <Dialog open={isOpen} fullScreen={true}>

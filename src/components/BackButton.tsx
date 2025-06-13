@@ -3,6 +3,7 @@
 import { Link } from '@/i18n/navigation'
 import { ArrowBackIosNew } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
+import useMatomo from '@/components/Matomo/useMatomo'
 import { useTranslations } from 'next-intl'
 
 /**
@@ -10,10 +11,14 @@ import { useTranslations } from 'next-intl'
  */
 const BackButton = () => {
   const t = useTranslations('BackButton')
+  const { trackEvent } = useMatomo()
 
   return (
     <IconButton
       href='/'
+      onClick={() => {
+        trackEvent('BackButton', 'click')
+      }}
       LinkComponent={Link}
       sx={{ width: '36px', height: '36px' }}
       aria-label={t('label')}
