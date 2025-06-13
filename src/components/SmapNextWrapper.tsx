@@ -7,7 +7,7 @@ import ScannerDialog from './ScannerDialog'
 import { usePathname, useRouter } from '@/i18n/navigation'
 import { useSearchParams } from 'next/navigation'
 import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner'
-import { useMatomo } from '@raumobil/next-matomo'
+import useMatomo from '@/components/Matomo/useMatomo'
 
 const SmapNextWrapper = ({
   baseURL,

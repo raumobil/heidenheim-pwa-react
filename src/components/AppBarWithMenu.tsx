@@ -12,7 +12,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
-import { useMatomo } from '@raumobil/next-matomo'
+import useMatomo from '@/components/Matomo/useMatomo'
 import { useTranslations } from 'next-intl'
 import { useCallback, useState } from 'react'
 

@@ -13,7 +13,7 @@ import { IDetectedBarcode, Scanner } from '@yudiel/react-qr-scanner'
 import { useCallback, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import ScannerAlert from './ScannerAlert'
-import { useMatomo } from '@raumobil/next-matomo'
+import useMatomo from '@/components/Matomo/useMatomo'
 
 type messagesType = {
   // maybe find a way to get Types from directly i18n

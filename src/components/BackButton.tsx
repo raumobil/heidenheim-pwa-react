@@ -3,7 +3,7 @@
 import { Link } from '@/i18n/navigation'
 import { ArrowBackIosNew } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
-import { useMatomo } from '@raumobil/next-matomo'
+import useMatomo from '@/components/Matomo/useMatomo'
 import { useTranslations } from 'next-intl'
 
 /**

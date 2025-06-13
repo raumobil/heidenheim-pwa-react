@@ -7,7 +7,7 @@ import AppBarWithMenu from '@/components/AppBarWithMenu'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import MatomoTrackingWrapper from '@/components/MatomoTrackingWrapper'
+import MatomoTracking from '@/components/Matomo/MatomoTracking'
 
 const inter = Inter({
   weight: ['300', '400', '600', '700'],
@@ -51,7 +51,8 @@ export default async function LocaleLayout({
               <CssBaseline />
               <AppBarWithMenu />
               {children}
-              <MatomoTrackingWrapper
+              {/* <MatomoTrackingWrapper */}
+              <MatomoTracking
                 // @ts-expect-error prevent undefined env variable
                 url={process.env.MATOMO_URL}
                 // @ts-expect-error prevent undefined env variable
