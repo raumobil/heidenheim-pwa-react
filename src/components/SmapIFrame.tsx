@@ -1,6 +1,5 @@
 'use client'
 
-import { parseDepartureMonitorId } from '@/util/smap'
 import { useLocale, useTranslations } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
 import { useMemo } from 'react'
@@ -24,9 +23,8 @@ const SmapIFrame = ({
   const dynamicSmapUrl = useMemo(() => {
     if (smapUrl) {
       const url = new URL(smapUrl)
-      const departureMonitorId = parseDepartureMonitorId(
-        searchParams.get('departureMonitorId')
-      )
+      const departureMonitorId = searchParams.get('departureMonitorId')
+
       if (departureMonitorId) {
         url.pathname = `${locale}${smapDepartureMonitorBasePath}/${departureMonitorId}`
       }
