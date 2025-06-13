@@ -51,7 +51,6 @@ export default async function LocaleLayout({
               <CssBaseline />
               <AppBarWithMenu />
               {children}
-              {/* <MatomoTrackingWrapper */}
               <MatomoTracking
                 // @ts-expect-error prevent undefined env variable
                 url={process.env.MATOMO_URL}
