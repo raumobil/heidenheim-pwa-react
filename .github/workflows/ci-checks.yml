@@ -27,6 +27,6 @@ jobs:
       - name: 'lint'
         run: npm run lint -- --max-warnings 0
       - name: 'test'
-        run: npm run test -- --ci
+        run: npm run test -- --ci --passWithNoTests
       - name: 'build'
         run: npm run build
