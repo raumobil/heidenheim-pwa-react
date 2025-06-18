@@ -29,8 +29,9 @@ const AppBarWithMenu = () => {
   }, [trackEvent])
 
   const closeMenu = useCallback(() => {
+    trackEvent('AppBarWithMenu', 'close', 'menu')
     setMenuOpen(false)
-  }, [])
+  }, [trackEvent])
 
   const t = useTranslations('AppBarWithMenu')
 
@@ -75,10 +76,7 @@ const AppBarWithMenu = () => {
       <Drawer
         anchor='right'
         open={menuOpen}
-        onClose={() => {
-          trackEvent('AppBarWithMenu', 'close', 'menu')
-          closeMenu()
-        }}
+        onClose={closeMenu}
         ModalProps={{
           keepMounted: true,
         }}
