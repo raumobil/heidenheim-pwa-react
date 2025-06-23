@@ -113,7 +113,12 @@ const AppBarWithMenu = () => {
             </Toolbar>
           </Grid>
           <Grid>
-            <MainMenu onMenuItemClick={closeMenu} />
+            <MainMenu
+              // does not use onClose because we do not want trackEvent here
+              onMenuItemClick={() => {
+                setMenuOpen(false)
+              }}
+            />
           </Grid>
         </Grid>
         <PwaInstallation />
