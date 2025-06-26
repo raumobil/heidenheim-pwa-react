@@ -8,6 +8,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import MatomoTracking from '@/components/Matomo/MatomoTracking'
+import IframeMessageListener from '@/components/IframeMessageListener'
 
 const inter = Inter({
   weight: ['300', '400', '600', '700'],
@@ -61,6 +62,7 @@ export default async function LocaleLayout({
               />
             </ThemeProvider>
           </AppRouterCacheProvider>
+          <IframeMessageListener smapURL={process.env.SMAP_URL} />
         </NextIntlClientProvider>
       </body>
     </html>
