@@ -24,9 +24,12 @@ const SmapIFrame = ({
     if (smapUrl) {
       const url = new URL(smapUrl)
       const departureMonitorId = searchParams.get('departureMonitorId')
+      const showImprint = searchParams.get('showImprint') === 'true'
 
       if (departureMonitorId) {
         url.pathname = `${locale}${smapDepartureMonitorBasePath}/${departureMonitorId}`
+      } else if (showImprint) {
+        url.pathname = `${locale}/settings/impressum`
       }
       return url
     }
