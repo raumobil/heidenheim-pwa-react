@@ -118,7 +118,11 @@ const ScannerDialog = ({
             alignItems='center'
             spacing={2}
           >
-            <Grid size='grow'>
+            <Grid size="auto">
+              {/* Spacer that has the same width as the close-Button */}
+              <Box sx={{ width: "28px" }} />
+            </Grid>
+            <Grid size="grow">
               <Typography
                 color='text.dark'
                 variant='titleLarge'
@@ -154,6 +158,7 @@ const ScannerDialog = ({
           position: 'absolute',
           bottom: '50px',
           left: '50%',
+          width: "70%",
           transform: 'translate(-50%, 0)',
         }}
       >
