@@ -118,6 +118,8 @@ const ScannerDialog = ({
             alignItems='center'
             spacing={2}
           >
+            {/* Spacer that has the same width as the close-Button */}
+            <Grid size='auto' sx={{ width: '28px' }} />
             <Grid size='grow'>
               <Typography
                 color='text.dark'
@@ -154,6 +156,8 @@ const ScannerDialog = ({
           position: 'absolute',
           bottom: '50px',
           left: '50%',
+          // make Alert the same size as the Scanner Rectangle
+          width: '70%',
           transform: 'translate(-50%, 0)',
         }}
       >
