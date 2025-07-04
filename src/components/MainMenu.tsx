@@ -77,8 +77,11 @@ const MainMenu = ({
         href='/accessibility'
         onClick={onMenuItemClick}
       />
-      {/* @ts-expect-error missing href until page Exists  */}
-      <MenuItem text={t('imprint')} onClick={onMenuItemClick} />
+      <MenuItem
+        text={t('imprint')}
+        href='/?link=imprint'
+        onClick={onMenuItemClick}
+      />
       {/* @ts-expect-error missing href until page Exists */}
       <MenuItem text={t('language')} onClick={onMenuItemClick} />
     </List>
