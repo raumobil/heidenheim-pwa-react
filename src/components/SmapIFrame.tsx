@@ -1,8 +1,9 @@
 'use client'
 
-import { useLocale, useTranslations } from 'next-intl'
+import { usePathname, useRouter } from '@/i18n/navigation'
+import { useTranslations } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
-import { useMemo } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const SmapIFrame = ({
   smapUrl,
@@ -12,31 +13,56 @@ const SmapIFrame = ({
   smapDepartureMonitorBasePath?: string
 }) => {
   const t = useTranslations('Home')
-
+  const path = usePathname()
   const searchParams = useSearchParams()
-  const locale = useLocale()
+  const [isIframeLoaded, setIsIframeLoaded] = useState(false)
+  const router = useRouter()
 
-  // modify iframe url dynamically
-  // TODO this should be replaced with `postMessage` to the iframe window
-  // and a corresponding event listener in smap-next
-  // so that nextjs router in smap-next can handle the transition
-  const dynamicSmapUrl = useMemo(() => {
-    if (smapUrl) {
-      const url = new URL(smapUrl)
-      const departureMonitorId = searchParams.get('departureMonitorId')
+  const iframeRef = useRef<HTMLIFrameElement>(null)
 
-      if (departureMonitorId) {
-        url.pathname = `${locale}${smapDepartureMonitorBasePath}/${departureMonitorId}`
+  // send Routing-Events to smap depending on searchParams
+  useEffect(() => {
+    const targetOrigin =
+      smapUrl && smapUrl?.length > 0 ? new URL(smapUrl ?? '').origin : null
+    if (isIframeLoaded && targetOrigin) {
+      if (searchParams.has('link')) {
+        if (searchParams.get('link') === 'imprint') {
+          iframeRef.current?.contentWindow?.postMessage(
+            {
+              eventType: 'routing',
+              path: '/settings/impressum',
+            },
+            targetOrigin
+          )
+        }
+        // remove searchParams to avoid retriggering useEffect on rerender and to allow triggering by the same parameter value
+        router.replace(path)
+      } else if (searchParams.has('departureMonitorId')) {
+        const departureMonitorId = searchParams.get('departureMonitorId')
+        iframeRef.current?.contentWindow?.postMessage(
+          {
+            eventType: 'routing',
+            path: `/${smapDepartureMonitorBasePath}/${departureMonitorId}`,
+          },
+          targetOrigin
+        )
+        // remove searchParams to avoid retriggering useEffect on rerender and to allow triggering by the same parameter value
+        router.replace(path)
       }
-      return url
     }
-  }, [locale, searchParams, smapDepartureMonitorBasePath, smapUrl])
+  })
 
   return (
     <iframe
+      ref={iframeRef}
+      onLoad={() => {
+        // wait a second for smap to initialize javascript
+        setTimeout(() => {
+          setIsIframeLoaded(true)
+        }, 1000)
+      }}
       title={t('iframe.title')}
-      // @ts-expect-error there is no reasonable fallback url
-      src={dynamicSmapUrl}
+      src={smapUrl}
       style={{ width: '100%', height: '100%', border: 0 }}
       allow='geolocation'
     ></iframe>
