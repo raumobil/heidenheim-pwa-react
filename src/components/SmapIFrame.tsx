@@ -19,7 +19,12 @@ const SmapIFrame = ({
   const router = useRouter()
 
   const iframeRef = useRef<HTMLIFrameElement>(null)
+
+  // send Routing-Events to smap depending on searchParams
   useEffect(() => {
+    const origin =
+      smapUrl && smapUrl?.length > 0 ? new URL(smapUrl ?? '').origin : ''
+    console.log('### origin: ', origin)
     if (isIframeLoaded) {
       if (searchParams.has('link')) {
         if (searchParams.get('link') === 'imprint') {
@@ -28,9 +33,10 @@ const SmapIFrame = ({
               eventType: 'routing',
               path: '/settings',
             },
-            '*'
+            origin
           )
         }
+        // remove searchParams to avoid retriggering useEffect on rerender and to allow triggering by the same parameter value
         router.replace(path)
       } else if (searchParams.has('departureMonitorId')) {
         const departureMonitorId = searchParams.get('departureMonitorId')
@@ -39,28 +45,28 @@ const SmapIFrame = ({
             eventType: 'routing',
             path: `/${smapDepartureMonitorBasePath}/${departureMonitorId}`,
           },
-          '*'
+          origin
         )
+        // remove searchParams to avoid retriggering useEffect on rerender and to allow triggering by the same parameter value
         router.replace(path)
       }
     }
   })
 
   return (
-    <>
-      <iframe
-        ref={iframeRef}
-        onLoad={() => {
-          setTimeout(() => {
-            setIsIframeLoaded(true)
-          }, 1000)
-        }}
-        title={t('iframe.title')}
-        src={smapUrl}
-        style={{ width: '100%', height: '100%', border: 0 }}
-        allow='geolocation'
-      ></iframe>
-    </>
+    <iframe
+      ref={iframeRef}
+      onLoad={() => {
+        // wait a second for smap to initialize javascript
+        setTimeout(() => {
+          setIsIframeLoaded(true)
+        }, 1000)
+      }}
+      title={t('iframe.title')}
+      src={smapUrl}
+      style={{ width: '100%', height: '100%', border: 0 }}
+      allow='geolocation'
+    ></iframe>
   )
 }
 
