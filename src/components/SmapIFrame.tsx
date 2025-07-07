@@ -22,18 +22,17 @@ const SmapIFrame = ({
 
   // send Routing-Events to smap depending on searchParams
   useEffect(() => {
-    const origin =
-      smapUrl && smapUrl?.length > 0 ? new URL(smapUrl ?? '').origin : ''
-    console.log('### origin: ', origin)
-    if (isIframeLoaded) {
+    const targetOrigin =
+      smapUrl && smapUrl?.length > 0 ? new URL(smapUrl ?? '').origin : null
+    if (isIframeLoaded && targetOrigin) {
       if (searchParams.has('link')) {
         if (searchParams.get('link') === 'imprint') {
           iframeRef.current?.contentWindow?.postMessage(
             {
               eventType: 'routing',
-              path: '/settings',
+              path: '/settings/impressum',
             },
-            origin
+            targetOrigin
           )
         }
         // remove searchParams to avoid retriggering useEffect on rerender and to allow triggering by the same parameter value
@@ -45,7 +44,7 @@ const SmapIFrame = ({
             eventType: 'routing',
             path: `/${smapDepartureMonitorBasePath}/${departureMonitorId}`,
           },
-          origin
+          targetOrigin
         )
         // remove searchParams to avoid retriggering useEffect on rerender and to allow triggering by the same parameter value
         router.replace(path)
