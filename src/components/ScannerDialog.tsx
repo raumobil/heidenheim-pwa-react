@@ -42,7 +42,7 @@ const ScannerDialog = ({
   const { trackEvent } = useMatomo()
 
   const onScanCallback = useCallback(
-    (detectedCodes: IDetectedBarcode[]) => {
+    async (detectedCodes: IDetectedBarcode[]) => {
       trackEvent('ScannerDialog', 'scan')
       const rawCode = detectedCodes[0].rawValue
       // this a poc to show that we can decide if a QRCode is one of ours.
@@ -62,6 +62,17 @@ const ScannerDialog = ({
             i18nKey: 'error.generic',
             severity: 'error',
           })
+        }
+      } else if (rawCode.startsWith('https://heidenheim.smartqr.info')) {
+        const redirectUrl = await fetch(
+          `/api/processUrl?processUrl=${rawCode}`
+        ).then((res) => res.json())
+
+        const departureMonitorId = new URL(redirectUrl).searchParams.get(
+          'departureMonitorId'
+        )
+        if (departureMonitorId) {
+          onScan(departureMonitorId)
         }
       } else {
         setMessage({
