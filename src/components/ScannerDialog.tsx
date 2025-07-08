@@ -14,6 +14,7 @@ import { useCallback, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import ScannerAlert from './ScannerAlert'
 import useMatomo from '@/components/Matomo/useMatomo'
+import { unshortenUrl } from '@/app/api/actions'
 
 type messagesType = {
   // maybe find a way to get Types from directly i18n
@@ -64,15 +65,17 @@ const ScannerDialog = ({
           })
         }
       } else if (rawCode.startsWith('https://heidenheim.smartqr.info')) {
-        const redirectUrl = await fetch(
-          `/api/processUrl?processUrl=${rawCode}`
-        ).then((res) => res.json())
-
-        const departureMonitorId = new URL(redirectUrl).searchParams.get(
-          'departureMonitorId'
-        )
-        if (departureMonitorId) {
-          onScan(departureMonitorId)
+        try {
+          const redirectUrl = await unshortenUrl(rawCode)
+          const departureMonitorId = new URL(redirectUrl).searchParams.get(
+            'departureMonitorId'
+          )
+          if (departureMonitorId) {
+            onScan(departureMonitorId)
+          }
+        } catch (error) {
+           
+          console.error('Error:', error)
         }
       } else {
         setMessage({
