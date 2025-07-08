@@ -27,6 +27,6 @@ export const GET = async (request: NextRequest): Promise<NextResponse> => {
   }
   // Fallthrough error
   return new NextResponse('Error', {
-    status: 500,
+    status: 400,
   })
 }
