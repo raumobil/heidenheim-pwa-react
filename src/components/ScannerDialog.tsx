@@ -14,6 +14,7 @@ import { useCallback, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import ScannerAlert from './ScannerAlert'
 import useMatomo from '@/components/Matomo/useMatomo'
+import { unshortenUrl } from '@/app/api/actions'
 
 type messagesType = {
   // maybe find a way to get Types from directly i18n
@@ -42,7 +43,7 @@ const ScannerDialog = ({
   const { trackEvent } = useMatomo()
 
   const onScanCallback = useCallback(
-    (detectedCodes: IDetectedBarcode[]) => {
+    async (detectedCodes: IDetectedBarcode[]) => {
       trackEvent('ScannerDialog', 'scan')
       const rawCode = detectedCodes[0].rawValue
       // this a poc to show that we can decide if a QRCode is one of ours.
@@ -62,6 +63,20 @@ const ScannerDialog = ({
             i18nKey: 'error.generic',
             severity: 'error',
           })
+        }
+      } else if (rawCode.startsWith('https://heidenheim.smartqr.info')) {
+        try {
+          const redirectUrl = await unshortenUrl(rawCode)
+          if (redirectUrl) {
+            const departureMonitorId = new URL(redirectUrl).searchParams.get(
+              'departureMonitorId'
+            )
+            if (departureMonitorId) {
+              onScan(departureMonitorId)
+            }
+          }
+        } catch (error) {
+          console.error('Error:', error)
         }
       } else {
         setMessage({
