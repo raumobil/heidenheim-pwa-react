@@ -67,14 +67,15 @@ const ScannerDialog = ({
       } else if (rawCode.startsWith('https://heidenheim.smartqr.info')) {
         try {
           const redirectUrl = await unshortenUrl(rawCode)
-          const departureMonitorId = new URL(redirectUrl).searchParams.get(
-            'departureMonitorId'
-          )
-          if (departureMonitorId) {
-            onScan(departureMonitorId)
+          if (redirectUrl) {
+            const departureMonitorId = new URL(redirectUrl).searchParams.get(
+              'departureMonitorId'
+            )
+            if (departureMonitorId) {
+              onScan(departureMonitorId)
+            }
           }
         } catch (error) {
-           
           console.error('Error:', error)
         }
       } else {
