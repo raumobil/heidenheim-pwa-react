@@ -15,7 +15,6 @@ export const GET = async (request: NextRequest): Promise<NextResponse> => {
     }).then((res) => {
       return res?.headers?.get('location')
     })
-    console.log('dsvfsdf', redirectUrl)
 
     if (typeof redirectUrl !== 'undefined') {
       return NextResponse.json(redirectUrl)
