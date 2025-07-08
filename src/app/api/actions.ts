@@ -1,4 +1,4 @@
-export async function unshortenUrl(url) {
+export async function unshortenUrl(url: string) {
   const redirectUrl = await fetch(`/api/processUrl?processUrl=${url}`).then(
     (res) => res.json()
   )
