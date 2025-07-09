@@ -71,15 +71,19 @@ const MainMenu = ({
         href='/?isScannerOpen=true'
         onClick={onMenuItemClick}
       />
-      <MenuItem text={t('legal')} href='/legal' onClick={onMenuItemClick} />
       <MenuItem
-        text={t('accessibility')}
-        href='/accessibility'
+        text={t('legal')}
+        href='/?link=legal'
         onClick={onMenuItemClick}
       />
       <MenuItem
         text={t('imprint')}
         href='/?link=imprint'
+        onClick={onMenuItemClick}
+      />
+      <MenuItem
+        text={t('accessibility')}
+        href='/?link=accessibility'
         onClick={onMenuItemClick}
       />
       {/* @ts-expect-error missing href until page Exists */}

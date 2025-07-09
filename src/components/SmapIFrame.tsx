@@ -26,11 +26,29 @@ const SmapIFrame = ({
       smapUrl && smapUrl?.length > 0 ? new URL(smapUrl ?? '').origin : null
     if (isIframeLoaded && targetOrigin) {
       if (searchParams.has('link')) {
+        if (searchParams.get('link') === 'legal') {
+          iframeRef.current?.contentWindow?.postMessage(
+            {
+              eventType: 'routing',
+              path: '/settings/datenschutz',
+            },
+            targetOrigin
+          )
+        }
         if (searchParams.get('link') === 'imprint') {
           iframeRef.current?.contentWindow?.postMessage(
             {
               eventType: 'routing',
               path: '/settings/impressum',
+            },
+            targetOrigin
+          )
+        }
+        if (searchParams.get('link') === 'accessibility') {
+          iframeRef.current?.contentWindow?.postMessage(
+            {
+              eventType: 'routing',
+              path: '/settings/erklaerung-zur-barrierefreiheit',
             },
             targetOrigin
           )
