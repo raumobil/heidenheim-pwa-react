@@ -48,8 +48,7 @@ const SmapIFrame = ({
           iframeRef.current?.contentWindow?.postMessage(
             {
               eventType: 'routing',
-              // todo: correct Link once we have it
-              path: '/settings',
+              path: '/settings/erklaerung-zur-barrierefreiheit',
             },
             targetOrigin
           )
