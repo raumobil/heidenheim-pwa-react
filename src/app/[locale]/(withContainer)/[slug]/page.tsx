@@ -1,4 +1,5 @@
 import BackButton from '@/components/BackButton'
+import MatomoOptOut from '@/components/Matomo/MatomoOptOut'
 import { Grid, Typography } from '@mui/material'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -75,6 +76,24 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             )
           })
       }
+      {slug === 'legal' && (
+        <>
+          <div id='matomo-opt-out'></div>
+          <MatomoOptOut
+            url={
+              `${process.env.MATOMO_URL}/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=de&showIntro=1` ||
+              ''
+            }
+          />
+          <Typography
+            variant='textLarge'
+            my={2}
+            sx={{ color: 'textDark.main' }}
+          >
+            {t('matomo.text')}
+          </Typography>
+        </>
+      )}
     </Grid>
   )
 }
