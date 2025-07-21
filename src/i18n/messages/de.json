@@ -16,7 +16,7 @@
   "MainMenu": {
     "map": "Kartenansicht",
     "qrCodeScanner": "QR-Code scannen",
-    "legal": "Datenschutz",
+    "data-protection-statement": "Datenschutz",
     "accessibility": "Erklärung zur Barrierefreiheit",
     "imprint": "Impressum",
     "language": "Sprache"
@@ -56,7 +56,7 @@
     }
   },
   "pages": {
-    "legal": {
+    "data-protection-statement": {
       "title": "Rechtliches",
       "body": {
         "block1": "<h3>Auskunft / Kontaktaufnahme</h3>",

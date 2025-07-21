@@ -76,7 +76,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             )
           })
       }
-      {slug === 'legal' && (
+      {slug === 'data-protection-statement' && (
         <>
           <div id='matomo-opt-out'></div>
           <MatomoOptOut

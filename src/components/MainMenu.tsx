@@ -71,7 +71,11 @@ const MainMenu = ({
         href='/?isScannerOpen=true'
         onClick={onMenuItemClick}
       />
-      <MenuItem text={t('legal')} href='/legal' onClick={onMenuItemClick} />
+      <MenuItem
+        text={t('data-protection-statement')}
+        href='/data-protection-statement'
+        onClick={onMenuItemClick}
+      />
       <MenuItem
         text={t('imprint')}
         href='/?link=imprint'
