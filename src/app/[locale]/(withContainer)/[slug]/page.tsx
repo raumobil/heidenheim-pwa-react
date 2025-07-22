@@ -81,8 +81,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
           <div id='matomo-opt-out'></div>
           <MatomoOptOut
             url={
-              `${process.env.MATOMO_URL}/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=de&showIntro=1` ||
-              ''
+              `${process.env.MATOMO_URL}/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=de&showIntro=1`
             }
           />
           <Typography
