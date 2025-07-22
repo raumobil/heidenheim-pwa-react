@@ -72,8 +72,8 @@ const MainMenu = ({
         onClick={onMenuItemClick}
       />
       <MenuItem
-        text={t('legal')}
-        href='/?link=legal'
+        text={t('data-protection-statement')}
+        href='/data-protection-statement'
         onClick={onMenuItemClick}
       />
       <MenuItem

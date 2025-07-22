@@ -1,12 +1,15 @@
 import BackButton from '@/components/BackButton'
+import MatomoOptOut from '@/components/Matomo/MatomoOptOut'
 import { Grid, Typography } from '@mui/material'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
+import { getLocale } from 'next-intl/server'
 
 /**
  * this is a regular page with content depending on the slug (WIP)
  */
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const locale = await getLocale()
   const { slug } = await params
 
   // load messages depending on slug
@@ -75,6 +78,21 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             )
           })
       }
+      {slug === 'data-protection-statement' && (
+        <>
+          <div id='matomo-opt-out'></div>
+          <MatomoOptOut
+            url={`${process.env.MATOMO_URL}/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=${locale}&showIntro=1`}
+          />
+          <Typography
+            variant='textLarge'
+            my={2}
+            sx={{ color: 'textDark.main' }}
+          >
+            {t('matomo.text')}
+          </Typography>
+        </>
+      )}
     </Grid>
   )
 }
