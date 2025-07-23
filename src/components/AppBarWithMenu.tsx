@@ -51,8 +51,8 @@ const AppBarWithMenu = () => {
           alignItems='center'
           spacing={2}
         >
-          <Grid size='auto'>
-            <HeidenheimLogo color='primary' />
+          <Grid size='auto' display='flex' alignItems='center'>
+            <HeidenheimLogo color='primary' sx={{ fontSize: 36 }} />
           </Grid>
           <Grid size='grow'>
             <Typography color='primary' variant='titleLarge' component='h1'>
