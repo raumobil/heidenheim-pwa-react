@@ -57,7 +57,7 @@ const AppBarWithMenu = () => {
           </Grid>
           <Grid size='grow' display='flex' alignItems='center'>
             <Image
-              src='appgefahren.svg'
+              src='/appgefahren.svg'
               alt={'appgefahren'}
               height={36}
               width={1} // It is neccessary but no effect
