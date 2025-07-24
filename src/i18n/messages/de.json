@@ -56,7 +56,7 @@
   },
   "pages": {
     "data-protection-statement": {
-      "title": "Rechtliches",
+      "title": "Datenschutz",
       "body": {
         "block1": "<h3>Datenschutzerklärung für QR-Code-Scanner-Modul „appgefahren“</h3>",
         "block2": "<p>Wir freuen uns über Ihre Nutzung unserer Progressive Web App (im Folgenden: „App“) und über Ihr Interesse an unserer smartmobilitymap. Hierbei achten wir Ihre Privatsphäre und gewährleisten den Schutz Ihrer personenbezogenen Daten, indem wir Ihre personenbezogenen Daten in Übereinstimmung mit dem Inhalt dieser Datenschutzbestimmungen sowie den anwendbaren Datenschutzgesetzen verarbeiten.</p>",
@@ -76,9 +76,9 @@
         "block16": "<h3>Matomo</h3>",
         "block17": "<p>Diese Website nutzt den Webanalysedienst Matomo, um die Nutzung unserer App analysieren und regelmäßig verbessern zu können. Wir verfolgen dabei das berechtigte Interesse, über die gewonnenen Statistiken unser Angebot zu verbessern und dieses für Sie als Nutzer interessanter zu gestalten. Wir setzten hierzu Matomo ohne Cookies ein. Rechtsgrundlage für die Nutzung von Matomo ist Art. 6 Abs. 1 S. 1 lit. f DSGVO.</p>",
         "block18": "<p>Die so erhobenen Informationen speichern wir ausschließlich auf unserem Server.</p>",
-        "block19": "<p>Die Verhinderung des Einsatzes von Matomo ist möglich, indem Sie indem Sie durch Klicken auf den nachfolgenden Link einen sog. Opt-Out-Cookie setzen: [Matomo  iFrame]. Bitte beachten Sie, dass durch das Opt-Out ein Cookie mit der Bezeichnung „mtm_consent_removed“ für die Dauer von 400 Tage auf Ihrem Endgerät gesetzt wird, um das Tracking zu verhindern – was technisch für die Gewährleistung Ihres Widerspruchsrechts notwendig ist. Sofern Sie hiernach Cookies von Ihrem Endgerät löschen, wird auch das Opt-Out-Cookie gelöscht, sodass ggf. ein erneuter Widerspruch bzw. Widerruf Ihrer Einwilligung erforderlich wird.</p>",
+        "block19": "<p>Die Verhinderung des Einsatzes von Matomo ist möglich, indem Sie indem Sie durch Klicken auf den nachfolgenden Link einen sog. Opt-Out-Cookie setzen:</p><matomoOptout></matomoOptout><p>  m. Bitte beachten Sie, dass durch das Opt-Out ein Cookie mit der Bezeichnung „mtm_consent_removed“ für die Dauer von 400 Tage auf Ihrem Endgerät gesetzt wird, um das Tracking zu verhindern – was technisch für die Gewährleistung Ihres Widerspruchsrechts notwendig ist. Sofern Sie hiernach Cookies von Ihrem Endgerät löschen, wird auch das Opt-Out-Cookie gelöscht, sodass ggf. ein erneuter Widerspruch bzw. Widerruf Ihrer Einwilligung erforderlich wird.</p>",
         "block20": "<p>Bitte beachten Sie, dass sich ein entsprechender opt-out ausschließlich auf Datenverarbeitungen bei der Nutzung des QR-Code-Scanner-Moduls bezieht; eine ggf. mögliche Datenverarbeitung mit Matomo bei „smap“ bleibt hiervon unberührt.</p>",
-        "block21": "<p>Diese App verwendet Matomo mit der Erweiterung „AnonymizeIP“. Dadurch werden IP-Adressen gekürzt weiterverarbeitet, eine direkte Personenbeziehbarkeit kann damit ausgeschlossen werden. Die mittels Matomo von Ihrem Browser übermittelte IP-Adresse wird nicht mit anderen von uns erhobenen Daten zusammengeführt. Informationen von Matomo zum Datenschutz erhalten Sie unter https://matomo.org/privacy/.</p>",
+        "block21": "<p>Diese App verwendet Matomo mit der Erweiterung „AnonymizeIP“. Dadurch werden IP-Adressen gekürzt weiterverarbeitet, eine direkte Personenbeziehbarkeit kann damit ausgeschlossen werden. Die mittels Matomo von Ihrem Browser übermittelte IP-Adresse wird nicht mit anderen von uns erhobenen Daten zusammengeführt. Informationen von Matomo zum Datenschutz erhalten Sie unter <link>https://matomo.org/privacy/</link></p>",
         "block22": "<h3>Widerruf von Einwilligungen</h3>",
         "block23": "<p>Sofern Sie uns gegenüber Einwilligungen, z. B. im Rahmen einer Anfrage über unser Kontaktformular oder in anderem Kontext, abgegeben haben, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>",
         "block24": "<h3>Widerspruch gegen eine Datenverarbeitung</h3>",
@@ -87,11 +87,11 @@
         "block27": "<p>Ihren Widerruf oder Widerspruch können Sie uns unter den Kontaktdaten unter „Verantwortlicher“ zusenden.</p>",
         "block28": "<h3>Ihre Rechte</h3>",
         "block29": "<p>Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:</p>",
-        "block30": "<p><ul><li>Recht auf Auskunft, ob wir Daten über Ihre Person verarbeiten. Falls wir Daten über Ihre Person verarbeiten, haben Sie das Recht Auskunft über die Art und Umstände der Datenverarbeitung zu erlangen (Art. 15 DSGVO),</li><li>Recht auf Berichtigung unrichtiger Daten (Art. 16 DSGVO) oder Recht auf Löschung Ihrer Daten, sofern die Voraussetzungen des Art. 17 Abs. 1 DSGVO erfüllt sind,</li><li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO),</li><li>Recht auf Widerspruch gegen die Verarbeitung unter den oben genannten Bedingungen (Art. 21 DSGVO),</li><li>Recht auf Datenübertragbarkeit unter den Voraussetzungen des Art. 20 DSGVO.</li></ul></p>",
+        "block30": "<ul><li>Recht auf Auskunft, ob wir Daten über Ihre Person verarbeiten. Falls wir Daten über Ihre Person verarbeiten, haben Sie das Recht Auskunft über die Art und Umstände der Datenverarbeitung zu erlangen (Art. 15 DSGVO),</li><li>Recht auf Berichtigung unrichtiger Daten (Art. 16 DSGVO) oder Recht auf Löschung Ihrer Daten, sofern die Voraussetzungen des Art. 17 Abs. 1 DSGVO erfüllt sind,</li><li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO),</li><li>Recht auf Widerspruch gegen die Verarbeitung unter den oben genannten Bedingungen (Art. 21 DSGVO),</li><li>Recht auf Datenübertragbarkeit unter den Voraussetzungen des Art. 20 DSGVO.</li></ul>",
         "block31": "<p>Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren.</p>",
         "block32": "<h3>Verantwortlicher</h3>",
-        "block33": "<p>raumobil GmbH, Auer Str. 19, 76227 Karlsruhe; Tel: 0721-6607245; Fax: 0721-6607248; Mail: info@raumobil.com</p>",
-        "block34": "<p>Datenschutzbeauftragter: datenschutzanfragen@xdsb.de oder unter unserer Postadresse mit dem Zusatz „der Datenschutzbeauftragte“.</p>"
+        "block33": "<p>raumobil GmbH, Auer Str. 19, 76227 Karlsruhe; Tel: 0721-6607245; Fax: 0721-6607248; Mail: <mail>info@raumobil.com</mail></p>",
+        "block34": "<p>Datenschutzbeauftragter: <mail>datenschutzanfragen@xdsb.de</mail> oder unter unserer Postadresse mit dem Zusatz „der Datenschutzbeauftragte“.</p>"
       },
       "matomo": {
         "text": "Beim Deaktivieren des Häkchens wird der Cookie mtm_consent_removed für 13 Monate gespeichert."
