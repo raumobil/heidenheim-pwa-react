@@ -65,6 +65,23 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
                         {chunks}
                       </Typography>
                     ),
+                    matomoOptout: () => (
+                      <>
+                        <div id='matomo-opt-out'></div>
+                        <MatomoOptOut
+                          url={`${process.env.MATOMO_URL}/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=${locale}&showIntro=1`}
+                        />
+                        <Typography
+                          variant='textLarge'
+                          my={2}
+                          sx={{ color: 'textDark.main' }}
+                        >
+                          {t('matomo.text')}
+                        </Typography>
+                      </>
+                    ),
+                    link: (chunks) => <a href={`${chunks}`} target='_blank'>{chunks}</a>,
+                    mail: (chunks) => <a href={`mailto:${chunks}`}>{chunks}</a>,
                     br: () => <br />,
                     ul: (chunks) => (
                       <ul style={{ margin: 0, paddingLeft: '16px' }}>
@@ -78,21 +95,6 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             )
           })
       }
-      {slug === 'data-protection-statement' && (
-        <>
-          <div id='matomo-opt-out'></div>
-          <MatomoOptOut
-            url={`${process.env.MATOMO_URL}/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=${locale}&showIntro=1`}
-          />
-          <Typography
-            variant='textLarge'
-            my={2}
-            sx={{ color: 'textDark.main' }}
-          >
-            {t('matomo.text')}
-          </Typography>
-        </>
-      )}
     </Grid>
   )
 }
