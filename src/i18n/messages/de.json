@@ -1,7 +1,6 @@
 {
   "AppBarWithMenu": {
     "toolbar": {
-      "title": "app <thin>gefahren</thin>",
       "button": {
         "openMenu": "Menü öffnen"
       }

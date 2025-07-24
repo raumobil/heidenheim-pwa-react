@@ -43,7 +43,6 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <head>
         <link rel='manifest' href='/manifest.json' />
-        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
       </head>
       <body className={inter.className}>
         <NextIntlClientProvider>
