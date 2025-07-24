@@ -80,7 +80,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
                         </Typography>
                       </>
                     ),
-                    link: (chunks) => <a href={`${chunks}`}>{chunks}</a>,
+                    link: (chunks) => <a href={`${chunks}`} target='_blank'>{chunks}</a>,
                     mail: (chunks) => <a href={`mailto:${chunks}`}>{chunks}</a>,
                     br: () => <br />,
                     ul: (chunks) => (
