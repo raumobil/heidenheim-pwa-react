@@ -15,6 +15,7 @@ import {
 import useMatomo from '@/components/Matomo/useMatomo'
 import { useTranslations } from 'next-intl'
 import { useCallback, useState } from 'react'
+import Image from 'next/image'
 
 /**
  * this component contains the main navigation
@@ -49,19 +50,19 @@ const AppBarWithMenu = () => {
           direction='row'
           size='grow'
           alignItems='center'
-          spacing={2}
+          spacing={0.5}
         >
-          <Grid size='auto'>
-            <HeidenheimLogo color='primary' />
+          <Grid size='auto' display='flex' alignItems='center'>
+            <HeidenheimLogo color='primary' sx={{ fontSize: 36 }} />
           </Grid>
-          <Grid size='grow'>
-            <Typography color='primary' variant='titleLarge' component='h1'>
-              {t.rich('toolbar.title', {
-                thin: (chunk) => (
-                  <Typography variant='titleLargeThin'>{chunk}</Typography>
-                ),
-              })}
-            </Typography>
+          <Grid size='grow' display='flex' alignItems='center'>
+            <Image
+              src='appgefahren.svg'
+              alt={'appgefahren'}
+              height={36}
+              width={1} // It is neccessary but no effect
+              style={{ width: 'auto', height: '36px' }}
+            />
           </Grid>
           <Grid size='auto'>
             <IconButton
