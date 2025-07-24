@@ -22,10 +22,10 @@
   },
   "QrCodeScanner": {
     "aria": { "close": "schließen" },
-    "message": "Den QR-Code findest du am Haltestellen-Schild.",
+    "message": "Den QR-Code findest du am Haltestellenschild.",
     "title": "QR-Code scannen",
     "error": {
-      "wrongQrCode": "Bitte scanne einen gültigen QR-Code an einem Haltestellen-Schild.",
+      "wrongQrCode": "Bitte scanne einen gültigen QR-Code an einem Haltestellenschild.",
       "noPermission": "Bitte erteile der Heidenheim-PWA die Berechtigung, auf die Kamera zuzugreifen, um einen QR-Code zu scannen.",
       "generic": "Ein unbekannter Fehler ist aufgetreten."
     }
