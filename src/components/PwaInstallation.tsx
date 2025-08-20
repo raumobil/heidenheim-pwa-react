@@ -1,5 +1,6 @@
 'use client'
 
+import useMatomo from '@/components/Matomo/useMatomo'
 import { AddBoxOutlined, InstallMobile, IosShare } from '@mui/icons-material'
 import {
   Alert,
@@ -27,6 +28,8 @@ const PwaInstallation = () => {
   const isPWA = window.matchMedia('(display-mode: standalone)').matches
   const hasChrome = browser.includes('Chrome')
   const hasSafari = browser.includes('Safari')
+
+  const { trackEvent } = useMatomo()
 
   useEffect(() => {
     // this is needed because chrome on mac contains both strings
@@ -64,13 +67,14 @@ const PwaInstallation = () => {
 
   const handleInstallClick = useCallback(() => {
     if (prompt) {
+      trackEvent('PwaInstallation', 'click', 'installButton')
       // @ts-expect-error actually we expect here the BeforeInstallPromptEvent but it is not supported by at least firefox
       prompt?.prompt()
     } else if (!hasChrome && hasSafari) {
       setShowInstallButton(false)
       setShowInstallationInstruction(true)
     }
-  }, [prompt, hasChrome, hasSafari])
+  }, [prompt, hasChrome, hasSafari, trackEvent])
 
   const t = useTranslations('PWAInstallation')
 
