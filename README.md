@@ -1,6 +1,24 @@
-# heidenheim-pwa-react
+# Purpose of the Appgefahren App (Heidenheim)
+
+The **Appgefahren App** is currently focused on providing a **digital departure monitor** for Heidenheim and the surrounding region.  
+It is implemented as a **Progressive Web App (PWA)** and integrates the **smap platform by raumobil** for smart mobility and traffic planning.  
+
+## Core Purposes
+- Display real-time departure times for buses and trains in Heidenheim  
+- Enable easy and up-to-date mobility planning through the integrated **raumobil smap**  
+- Use official **NVBW (Nahverkehrsgesellschaft Baden-Württemberg)** data as the reliable source for public transport information  
+- Deliver a lightweight, accessible solution as a PWA without requiring app store installation
+
+The app is designed to make mobility in Heidenheim more transparent and accessible by offering a simple, digital way to check departures and plan routes.
+
+## Contact
+
+For (technical) questions regarding the project, please contact: **info@raumobil.com**
+
+# technical documentation: heidenheim-pwa-react
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+It is using the 
 
 ## Getting Started
 
