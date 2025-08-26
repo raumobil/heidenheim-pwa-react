@@ -50,6 +50,7 @@ const PwaInstallation = () => {
     }
 
     const handleAfterInstallPrompt = () => {
+      trackEvent('PwaInstallation', 'PWA installed')
       setShowInstallButton(false)
     }
 
@@ -63,7 +64,7 @@ const PwaInstallation = () => {
       )
       window.removeEventListener('appinstalled', handleAfterInstallPrompt)
     }
-  }, [hasChrome, hasSafari, isPWA])
+  }, [hasChrome, hasSafari, isPWA, trackEvent])
 
   const handleInstallClick = useCallback(() => {
     if (prompt) {
