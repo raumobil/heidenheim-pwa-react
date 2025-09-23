@@ -1,5 +1,6 @@
 'use client'
 
+import { CustomDimensions } from '@/components/Matomo/constants'
 import useMatomo from '@/components/Matomo/useMatomo'
 import { AddBoxOutlined, InstallMobile, IosShare } from '@mui/icons-material'
 import {
@@ -29,9 +30,12 @@ const PwaInstallation = () => {
   const hasChrome = browser.includes('Chrome')
   const hasSafari = browser.includes('Safari')
 
-  const { trackEvent } = useMatomo()
+  const { trackEvent, setCustomDimension } = useMatomo()
 
   useEffect(() => {
+    // set PWA state custom dimension
+    setCustomDimension(CustomDimensions.IS_PWA, isPWA ? 1 : 0)
+
     // this is needed because chrome on mac contains both strings
     if (!isPWA && !hasChrome && hasSafari) {
       // safari
@@ -50,6 +54,7 @@ const PwaInstallation = () => {
     }
 
     const handleAfterInstallPrompt = () => {
+      trackEvent('PwaInstallation', 'PWA installed')
       setShowInstallButton(false)
     }
 
@@ -63,7 +68,7 @@ const PwaInstallation = () => {
       )
       window.removeEventListener('appinstalled', handleAfterInstallPrompt)
     }
-  }, [hasChrome, hasSafari, isPWA])
+  }, [hasChrome, hasSafari, isPWA, setCustomDimension, trackEvent])
 
   const handleInstallClick = useCallback(() => {
     if (prompt) {

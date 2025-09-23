@@ -8,7 +8,7 @@ const useMatomo = () => {
   // XXX poc matomo tracking
   // eslint-disable-next-line
   const push = (args: any[]) => {
-    // @ts-expect-error prevent unknown property errore
+    // @ts-expect-error prevent unknown property error
     // eslint-disable-next-line
     const _paq: any = (window._paq = window._paq || [])
     _paq.push(args)
@@ -38,6 +38,14 @@ const useMatomo = () => {
     push(['trackSiteSearch', search, category, numberOfResults])
   }
 
+  const setCustomDimension = (
+    customDimensionId: number,
+    customDimensionValue: string | number
+  ) => {
+    push(['setCustomDimension', customDimensionId, customDimensionValue])
+    push(['trackPageView'])
+  }
+
   // this is a debounced version of the standard trackSiteSearch call
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedTrackSiteSearch = useCallback(
@@ -53,6 +61,7 @@ const useMatomo = () => {
 
   return {
     push,
+    setCustomDimension,
     trackPageView,
     trackEvent,
     trackSiteSearch,
