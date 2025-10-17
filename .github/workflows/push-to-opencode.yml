@@ -19,4 +19,4 @@ jobs:
         - name: add opencode remote
           run: git remote add opencode https://raumobil:${{ secrets.OPENCODE_TOKEN }}@gitlab.opencode.de/OC00001179881/digitaler-abfahrtsmonitor.git
         - name: push to opencode remote
-          run: git push opencode
+          run: git push opencode --force
