@@ -30,13 +30,10 @@ description:
     genericName: "Digitaler Abfahrtsmonitor"    # Funktion ihre Projekts (max. 35 Zeichen, z.B. "Texteditor", "Textverarbeitung", "Webbrowser", "Chat")
     shortDescription: >    # Kurze Beschreibung AUF DEUTSCH (Maximal 150 Zeichen)
       Die Appgefahren App bietet derzeit einen digitalen Abfahrtsmonitor für Heidenheim und die Umgebung. 
-    # longDescription: >    # Ausführliche Beschreibung AUF DEUTSCH (zwischen 500 und 10000 Zeichen)
-    #   Eine sehr lange Beschreibung dieser Software,
-    #   auch auf mehrere Zeilen aufgeteilt.
-    #   Sie sollten beschreiben, worum es bei der Software geht
-    #   und warum man sie benötigt.
-    #   Hier könnten potenziell sehr viele Zeichen Text enthalten sein.
-    #   Sie muss zwischen 500 und 10000 Zeichen lang sein.
+    longDescription: >    # Ausführliche Beschreibung AUF DEUTSCH (zwischen 500 und 10000 Zeichen)
+      Mit der neuen Mobilitätsanwendung „appgefahren“ macht die Stadt Heidenheim einen weiteren Schritt in Richtung smarter Mobilität. Im Rahmen des interkommunalen Modellprojekts #Aalen-HeidenheimGemeinsamDigital wurde ein innovativer Service umgesetzt, der die Nutzung des öffentlichen Nahverkehrs deutlich komfortabler und transparenter gestaltet.
+      Ab sofort können Bürgerinnen und Bürger mit ihrem Smartphone über einen QR-Code an den Heidenheimer Bushaltestellen in Echtzeit die aktuellen Abfahrtszeiten abrufen. Die Web-App, die hinter dem System steht, ist für alle frei zugänglich und bietet eine Vielzahl hilfreicher Funktionen – sowohl an der Haltestelle als auch von unterwegs oder bequem von zu Hause aus.
+    # Text von https://www.tourismus-heidenheim.de/info+_+service/appgefahren
     features:    # Auflistung der Features ihrer Software
       - Echtzeit Anzeige von Abfahrten für Busse und Bahnen in Heidenheim
       - einfache und aktuelle Mobilitätsplanung durch die integrierte raumobil smap
@@ -50,11 +47,10 @@ description:
     genericName: "Web Browser"    # Funktion ihre Projekts (max. 35 Zeichen, z.B. "Texteditor", "Textverarbeitung", "Webbrowser", "Chat")
     shortDescription: >    # Kurze Beschreibung AUF ENGLISCH (Maximal 150 Zeichen)
       The Appgefahren App is currently focused on providing a digital departure monitor for Heidenheim and the surrounding region.
-    # longDescription: >    # Ausführliche Beschreibung AUF ENGLISCH (zwischen 500 und 10000 Zeichen)
-    #   Very long description of this software, also split
-    #   on multiple rows. You should note what the software
-    #   is and why one should need it. We can potentially
-    #   have many pages of text here.
+    longDescription: >    # Ausführliche Beschreibung AUF ENGLISCH (zwischen 500 und 10000 Zeichen)
+      With the new mobility application “appgefahren,” the city of Heidenheim is taking another step toward smarter mobility. As part of the intermunicipal model project #Aalen-HeidenheimGemeinsamDigital, an innovative service has been implemented that makes the use of public transportation significantly more convenient and transparent.
+      Citizens can now use their smartphones to check the current departure times in real time via a QR code at bus stops in Heidenheim. The web app behind the system is freely accessible to everyone and offers a variety of helpful functions – both at the bus stop and on the go or from the comfort of your own home.
+    # Translated with DeepL.com
     features:    # Auflistung der Features ihrer Software
       - Display real-time departure times for buses and trains in Heidenheim
       - Enable easy and up-to-date mobility planning through the integrated raumobil smap
