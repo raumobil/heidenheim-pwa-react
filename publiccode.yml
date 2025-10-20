@@ -1,0 +1,74 @@
+publiccodeYmlVersion: "0.4"    # Version des publiccode.yml-Formats 
+name: "Appgefahren App"    # Name ihres Projekts
+url: "https://gitlab.opencode.de/OC00001179881/digitaler-abfahrtsmonitor"    # URL zu Ihrem Projekt (es muss sich um eine URL zu einem Projekt, nicht zu einer Gruppe handeln)
+landingURL: "https://gitlab.opencode.de/OC00001179881/digitaler-abfahrtsmonitor.git"    # URL zu der Webseite ihrer Software
+softwareVersion: "1.0.0"    # Version ihrer Software
+releaseDate: "2025-05-23"    # Veröffentlichungsdatum ihrer Software
+# logo: logo.svg     # Pfad zu ihrem Logo im Wurzelverzeichnis. Erlaubte Dateiformate sind: .svg, .svgz und .png
+platforms:    # Unterstützte Plattformen. Mögliche Angaben: web, windows, mac, linux, ios, android
+  - web
+# usedBy:    # Prominente Nutzung Ihrer Software / Wer nutzt Ihre Sotware bereits?
+#   - Zendis
+categories:    # Kategorien, die Ihre Software beschreiben 
+  - geographic-information-systems
+developmentStatus: stable    # Entwicklungsstatus (Mögliche Angaben: concept, development, beta, stable, obsolete)
+softwareType: "standalone/web"    # Typ (Mögliche Angaben: standalone/backend, standalone/desktop, standalone/iot, 
+                                      # standalone/mobile, standalone/web, standalone/other, addon, library, configurationFiles)
+localisation:
+  localisationReady: true
+  availableLanguages:    # Unterstützte Sprachen (gemäß IETF BCP 47 language tag)
+    - de
+    # - en
+intendedAudience:
+    countries: # Länder (https://de.wikipedia.org/wiki/ISO-3166-1-Kodierliste), die der Zielgruppe entsprechen. In Kleinbuchstaben!
+        - "de"
+    scope: # Themenbereiche, die am ehsten denen Ihrer Software entsprechen. Die unterstützten Einträge finden sich unter https://yml.publiccode.tools/scope-list.html#scope-list. Es sind keine eigenen Einträge möglich
+        - "local-authorities"
+        - "environment"
+description:
+  de:
+    genericName: "Digitaler Abfahrtsmonitor"    # Funktion ihre Projekts (max. 35 Zeichen, z.B. "Texteditor", "Textverarbeitung", "Webbrowser", "Chat")
+    shortDescription: >    # Kurze Beschreibung AUF DEUTSCH (Maximal 150 Zeichen)
+      Die Appgefahren App bietet derzeit einen digitalen Abfahrtsmonitor für Heidenheim und die Umgebung. 
+    longDescription: >    # Ausführliche Beschreibung AUF DEUTSCH (zwischen 500 und 10000 Zeichen)
+      Mit der neuen Mobilitätsanwendung „appgefahren“ macht die Stadt Heidenheim einen weiteren Schritt in Richtung smarter Mobilität. Im Rahmen des interkommunalen Modellprojekts #Aalen-HeidenheimGemeinsamDigital wurde ein innovativer Service umgesetzt, der die Nutzung des öffentlichen Nahverkehrs deutlich komfortabler und transparenter gestaltet.
+      Ab sofort können Bürgerinnen und Bürger mit ihrem Smartphone über einen QR-Code an den Heidenheimer Bushaltestellen in Echtzeit die aktuellen Abfahrtszeiten abrufen. Die Web-App, die hinter dem System steht, ist für alle frei zugänglich und bietet eine Vielzahl hilfreicher Funktionen – sowohl an der Haltestelle als auch von unterwegs oder bequem von zu Hause aus.
+    # Text von https://www.tourismus-heidenheim.de/info+_+service/appgefahren
+    features:    # Auflistung der Features ihrer Software
+      - Echtzeit Anzeige von Abfahrten für Busse und Bahnen in Heidenheim
+      - einfache und aktuelle Mobilitätsplanung durch die integrierte raumobil smap
+      - Nutzung offizieller NVBW (Nahverkehrsgesellschaft Baden-Württemberg) Daten als zuverlässige Quelle von ÖPNV Informationen
+      - eine leichtgewichtige, zugängliche Lösung als PWA ohne eine App Store Installation zu benötigen
+    # screenshots:    # Screenshots zu ihrem Projekt 
+    #   - .opencode/screenshots/sshot1.jpg
+    #   - .opencode/screenshots/sshot2.jpg
+    #   - .opencode/screenshots/sshot3.jpg
+  en:
+    genericName: "Web Browser"    # Funktion ihre Projekts (max. 35 Zeichen, z.B. "Texteditor", "Textverarbeitung", "Webbrowser", "Chat")
+    shortDescription: >    # Kurze Beschreibung AUF ENGLISCH (Maximal 150 Zeichen)
+      The Appgefahren App is currently focused on providing a digital departure monitor for Heidenheim and the surrounding region.
+    longDescription: >    # Ausführliche Beschreibung AUF ENGLISCH (zwischen 500 und 10000 Zeichen)
+      With the new mobility application “appgefahren,” the city of Heidenheim is taking another step toward smarter mobility. As part of the intermunicipal model project #Aalen-HeidenheimGemeinsamDigital, an innovative service has been implemented that makes the use of public transportation significantly more convenient and transparent.
+      Citizens can now use their smartphones to check the current departure times in real time via a QR code at bus stops in Heidenheim. The web app behind the system is freely accessible to everyone and offers a variety of helpful functions – both at the bus stop and on the go or from the comfort of your own home.
+    # Translated with DeepL.com
+    features:    # Auflistung der Features ihrer Software
+      - Display real-time departure times for buses and trains in Heidenheim
+      - Enable easy and up-to-date mobility planning through the integrated raumobil smap
+      - Use official NVBW (Nahverkehrsgesellschaft Baden-Württemberg) data as the reliable source for public transport information
+      - Deliver a lightweight, accessible solution as a PWA without requiring app store installation
+    # screenshots:    # Screenshots zu ihrem Projekt 
+    #   - .opencode/screenshots/sshot1-en.jpg
+    #   - .opencode/screenshots/sshot2.jpg
+    #   - .opencode/screenshots/sshot3-en.jpg
+legal:
+  license: MIT License    # Die Open-Source-Lizenz ihrer Software 
+maintenance:
+  type: "contract"    # Art der Betreuung der Software (Mögliche Angaben: internal, contract, community, none)
+  contacts:    # Auflistung von Kontakten, welche ihre Software betreuen
+    - name: "raumobil GmbH"
+      email: "info@raumobil.com"
+  # contractors:    # Vertragspartner:innen
+  #   - name: ZenDis
+  #     email: "hallo@zendis.de"
+  #     website: "zendis.de"
+  #     until: "2023-01-01"

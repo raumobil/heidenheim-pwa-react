@@ -1,0 +1,27 @@
+name: push-to-opencode
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+# https://docs.github.com/en/actions/using-jobs/using-concurrency#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  push:
+    runs-on: selfhosted-linux
+    steps:
+        - uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: add opencode remote
+          run: |
+            if git remote | grep -q '^opencode$'; then
+              git remote rm opencode
+            fi
+            git remote add opencode https://raumobil:${{ secrets.OPENCODE_TOKEN }}@gitlab.opencode.de/OC00001179881/digitaler-abfahrtsmonitor.git
+        - name: push to opencode remote
+          run: git push opencode --force
