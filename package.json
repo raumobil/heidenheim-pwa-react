@@ -22,8 +22,8 @@
     "lodash": "^4.17.21",
     "next": "15.3.8",
     "next-intl": "^4.1.0",
-    "react": "^19.0.1",
-    "react-dom": "^19.0.1"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
