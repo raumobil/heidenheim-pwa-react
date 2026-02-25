@@ -40,6 +40,11 @@
     "label": "zurück"
   },
   "PWAInstallation": {
+    "dialog": {
+      "title": "appgefahren! WebApp installieren",
+      "iosText": "Füge die appgefahren! WebApp deinem Home-Bildschirm hinzu, um sie immer dabei zu haben.",
+      "chromiumText": "Installiere die appgefahren! WebApp, um sie immer dabei zu haben."
+    },
     "install": {
       "button": {
         "label": "WebApp installieren"
