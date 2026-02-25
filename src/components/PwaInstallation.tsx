@@ -2,17 +2,9 @@
 
 import { CustomDimensions } from '@/components/Matomo/constants'
 import useMatomo from '@/components/Matomo/useMatomo'
-import { AddBoxOutlined, InstallMobile, IosShare } from '@mui/icons-material'
-import {
-  Alert,
-  Button,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  Typography,
-} from '@mui/material'
+import PwaInstallationInstructionIos from '@/components/PwaInstallationInstructionIos'
+import { InstallMobile } from '@mui/icons-material'
+import { Alert, Button, Grid, Typography } from '@mui/material'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -125,67 +117,7 @@ const PwaInstallation = () => {
               <Typography color='textDark' variant='textLargeColored'>
                 {t('install.instruction.title')}
               </Typography>
-              <List sx={{ listStyle: 'decimal', pl: 2.5 }} component={'ol'}>
-                <ListItem
-                  sx={{ display: 'list-item', paddingX: 0, paddingY: 0.5 }}
-                >
-                  <ListItemText>
-                    <Grid
-                      container
-                      direction='row'
-                      alignItems='center'
-                      gap={0.5}
-                    >
-                      <Grid>
-                        <Typography color='textDark' variant='textLarge'>
-                          {t('install.instruction.step1')}{' '}
-                        </Typography>
-                      </Grid>
-                      <Grid>
-                        <Paper
-                          sx={{
-                            borderRadius: 0,
-                            display: 'inline-block',
-                            px: 0.5,
-                          }}
-                        >
-                          <IosShare
-                            titleAccess={t('install.instruction.iosShareIcon')}
-                          />
-                        </Paper>
-                      </Grid>
-                    </Grid>
-                  </ListItemText>
-                </ListItem>
-                <ListItem
-                  sx={{ display: 'list-item', paddingX: 0, paddingY: 0.5 }}
-                >
-                  <ListItemText>
-                    <Typography color='textDark' variant='textLarge'>
-                      {t('install.instruction.step2')}
-                    </Typography>
-                    <Paper
-                      sx={{ borderRadius: 0, display: 'inline-block', p: 0.5 }}
-                    >
-                      <Grid
-                        container
-                        direction='row'
-                        alignItems='center'
-                        gap={0.5}
-                      >
-                        <Typography variant='textLarge'>
-                          {t('install.instruction.toHomeScreen')}
-                        </Typography>
-                        <AddBoxOutlined
-                          titleAccess={t(
-                            'install.instruction.addBoxIconOutlinedIcon'
-                          )}
-                        />
-                      </Grid>
-                    </Paper>
-                  </ListItemText>
-                </ListItem>
-              </List>
+              <PwaInstallationInstructionIos />
             </Alert>
           </Grid>
         </Grid>
