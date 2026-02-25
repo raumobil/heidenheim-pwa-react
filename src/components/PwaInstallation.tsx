@@ -2,9 +2,9 @@
 
 import { CustomDimensions } from '@/components/Matomo/constants'
 import useMatomo from '@/components/Matomo/useMatomo'
+import PwaInstallationButtonChromium from '@/components/PwaInstallationButtonChromium'
 import PwaInstallationInstructionIos from '@/components/PwaInstallationInstructionIos'
-import { InstallMobile } from '@mui/icons-material'
-import { Alert, Button, Grid, Typography } from '@mui/material'
+import { Alert, Grid, Typography } from '@mui/material'
 import { useTranslations } from 'next-intl'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -86,15 +86,7 @@ const PwaInstallation = () => {
     >
       {showInstallButton && (
         <Grid container justifyContent={'center'}>
-          <Button
-            startIcon={<InstallMobile />}
-            onClick={handleInstallClick}
-            sx={{ py: 1, color: 'communication.hyperlink.main' }}
-          >
-            <Typography variant='labelMedium' sx={{ textTransform: 'none' }}>
-              {t('install.button.label')}
-            </Typography>
-          </Button>
+          <PwaInstallationButtonChromium onClick={handleInstallClick} />
         </Grid>
       )}
       {showInstallationInstruction && (
