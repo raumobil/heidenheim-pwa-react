@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import MatomoTracking from '@/components/Matomo/MatomoTracking'
 import PwaContentProvider from '@/components/PwaContentProvider'
+import PwaInstallationDialog from '@/components/PwaInstallationDialog'
 
 const inter = Inter({
   weight: ['300', '400', '600', '700'],
@@ -51,6 +52,7 @@ export default async function LocaleLayout({
             <ThemeProvider theme={theme}>
               <PwaContentProvider>
                 <CssBaseline />
+                <PwaInstallationDialog />
                 <AppBarWithMenu />
                 {children}
                 <MatomoTracking
