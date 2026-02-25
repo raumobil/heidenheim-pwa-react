@@ -14,7 +14,7 @@ const PwaInstallation = () => {
   const { handleInstallClick, showInstallButton, showInstallationInstruction } =
     useContext(PwaContext)
 
-  const t = useTranslations('PWAInstallation')
+  const t = useTranslations('PWAInstallation.install')
 
   return (
     <Grid
@@ -49,7 +49,7 @@ const PwaInstallation = () => {
               })}
             >
               <Typography color='textDark' variant='textLargeColored'>
-                {t('install.instruction.title')}
+                {t('instruction.title')}
               </Typography>
               <PwaInstallationInstructionIos />
             </Alert>
