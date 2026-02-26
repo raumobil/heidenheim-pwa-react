@@ -30,7 +30,7 @@ const PwaInstallationDialog = () => {
   const [open, setOpen] = useState(true)
   const { trackEvent } = useMatomo()
 
-  const t = useTranslations('PWAInstallation')
+  const t = useTranslations('PWAInstallation.dialog')
 
   return (
     <>
@@ -70,7 +70,7 @@ const PwaInstallationDialog = () => {
                 </Avatar>
               </Grid>
               <Grid alignItems={'flex-start'} flexGrow={0}>
-                {t('dialog.title')}
+                {t('title')}
               </Grid>
             </Grid>
           </DialogTitle>
@@ -94,15 +94,13 @@ const PwaInstallationDialog = () => {
               {showInstallButton && (
                 <Grid container justifyContent={'center'} px={2} gap={1.5}>
                   <Typography variant='textLarge'>
-                    {t('dialog.chromiumText')}
+                    {t('chromiumText')}
                   </Typography>
                 </Grid>
               )}
               {showInstallationInstruction && (
                 <Grid px={2} container direction={'row'}>
-                  <Typography variant='textLarge'>
-                    {t('dialog.iosText')}
-                  </Typography>
+                  <Typography variant='textLarge'>{t('iosText')}</Typography>
                   <PwaInstallationInstructionIos />
                 </Grid>
               )}
