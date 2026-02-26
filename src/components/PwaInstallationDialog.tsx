@@ -14,12 +14,10 @@ import {
   Divider,
   Grid,
   IconButton,
-  SvgIcon,
   Typography,
 } from '@mui/material'
 import { useTranslations } from 'next-intl'
 import { useContext, useState } from 'react'
-import InlineSVG from 'react-inlinesvg'
 
 /**
  * this component contains the PWA installation
@@ -62,12 +60,9 @@ const PwaInstallationDialog = () => {
             >
               <Grid flexGrow={0}>
                 <Avatar
+                  src='/pwa-icons/180-maskable.png'
                   variant={showInstallationInstruction ? 'rounded' : 'circular'}
-                >
-                  <SvgIcon viewBox='0 0 40 40'>
-                    <InlineSVG width={40} height={40} src={'icon.svg'} />
-                  </SvgIcon>
-                </Avatar>
+                />
               </Grid>
               <Grid alignItems={'flex-start'} flexGrow={0}>
                 {t('title')}
