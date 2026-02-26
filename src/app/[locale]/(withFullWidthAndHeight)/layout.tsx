@@ -3,11 +3,7 @@ import { Box } from '@mui/material'
 /**
  * this layout places its content inside a box which uses all available width and height
  */
-const FullWidthAndHeightLayout = ({
-  children,
-}: {
-  children: React.ReactNode
-}) => {
+const FullWidthAndHeightLayout = ({ children }: LayoutProps<'/[locale]'>) => {
   return (
     <Box
       // 48px is the height of the AppBar (with dense prop)
