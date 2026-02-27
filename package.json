@@ -23,8 +23,7 @@
     "next": "15.3.8",
     "next-intl": "^4.1.0",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-inlinesvg": "^4.2.0"
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
