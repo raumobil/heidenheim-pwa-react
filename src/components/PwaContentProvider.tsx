@@ -5,10 +5,8 @@ import { CustomDimensions } from '@/components/Matomo/constants'
 import useMatomo from '@/components/Matomo/useMatomo'
 import {
   createContext,
-  Dispatch,
   MouseEventHandler,
   ReactNode,
-  SetStateAction,
   useCallback,
   useEffect,
   useState,
@@ -18,7 +16,6 @@ interface PwaContextType {
   handleInstallClick?: MouseEventHandler<HTMLAnchorElement>
   showPwaInstallOptions: boolean
   showSafariInstructions: boolean
-  setShowSafariInstructions?: Dispatch<SetStateAction<boolean>>
   prompt?: Event
 }
 
@@ -93,7 +90,6 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
         handleInstallClick,
         showPwaInstallOptions,
         showSafariInstructions,
-        setShowSafariInstructions,
         prompt,
       }}
     >
