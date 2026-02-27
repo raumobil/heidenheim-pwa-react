@@ -23,7 +23,7 @@ import { useContext, useState } from 'react'
  * this component contains the PWA installation
  */
 const PwaInstallationDialog = () => {
-  const { handleInstallClick, showInstallButton, showInstallationInstruction } =
+  const { handleInstallClick, showPwaInstallOptions, showSafariInstructions } =
     useContext(PwaContext)
   const [open, setOpen] = useState(true)
   const { trackEvent } = useMatomo()
@@ -32,7 +32,7 @@ const PwaInstallationDialog = () => {
 
   return (
     <>
-      {open && (showInstallButton || showInstallationInstruction) && (
+      {open && (showPwaInstallOptions || showSafariInstructions) && (
         <Dialog
           open={open}
           onClose={() => {
@@ -61,7 +61,7 @@ const PwaInstallationDialog = () => {
               <Grid flexGrow={0}>
                 <Avatar
                   src='/pwa-icons/180-maskable.png'
-                  variant={showInstallationInstruction ? 'rounded' : 'circular'}
+                  variant={showSafariInstructions ? 'rounded' : 'circular'}
                 />
               </Grid>
               <Grid alignItems={'flex-start'} flexGrow={0}>
@@ -86,14 +86,14 @@ const PwaInstallationDialog = () => {
           <Divider sx={{ my: 1, py: 0 }} />
           <DialogContent sx={{ px: 0, py: 1.5 }}>
             <Grid container>
-              {showInstallButton && (
+              {showPwaInstallOptions && (
                 <Grid container justifyContent={'center'} px={2} gap={1.5}>
                   <Typography variant='textLarge'>
                     {t('chromiumText')}
                   </Typography>
                 </Grid>
               )}
-              {showInstallationInstruction && (
+              {showSafariInstructions && (
                 <Grid px={2} container direction={'row'}>
                   <Typography variant='textLarge'>{t('iosText')}</Typography>
                   <PwaInstallationInstructionIos />
@@ -101,7 +101,7 @@ const PwaInstallationDialog = () => {
               )}
             </Grid>
           </DialogContent>
-          {showInstallButton && (
+          {showPwaInstallOptions && (
             <DialogActions sx={{ justifyContent: 'center' }}>
               {/* @ts-expect-error ignore undefined */}
               <PwaInstallationButtonChromium onClick={handleInstallClick} />

@@ -11,7 +11,7 @@ import { useContext } from 'react'
  * this component contains the PWA installation
  */
 const PwaInstallation = () => {
-  const { handleInstallClick, showInstallButton, showInstallationInstruction } =
+  const { handleInstallClick, showPwaInstallOptions, showSafariInstructions } =
     useContext(PwaContext)
 
   const t = useTranslations('PWAInstallation.install')
@@ -25,13 +25,13 @@ const PwaInstallation = () => {
       pb={7.5}
       sx={{ height: '100%' }}
     >
-      {showInstallButton && (
+      {showPwaInstallOptions && (
         <Grid container justifyContent={'center'}>
           {/* @ts-expect-error ignore undefined */}
           <PwaInstallationButtonChromium onClick={handleInstallClick} />
         </Grid>
       )}
-      {showInstallationInstruction && (
+      {showSafariInstructions && (
         <Grid px={2} container direction={'row'}>
           <Grid size='grow'>
             <Alert

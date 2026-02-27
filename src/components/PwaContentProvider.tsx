@@ -16,23 +16,24 @@ import {
 
 interface PwaContextType {
   handleInstallClick?: MouseEventHandler<HTMLAnchorElement>
-  showInstallButton: boolean
-  showInstallationInstruction: boolean
-  setShowInstallationInstruction?: Dispatch<SetStateAction<boolean>>
+  showPwaInstallOptions: boolean
+  showSafariInstructions: boolean
+  setShowSafariInstructions?: Dispatch<SetStateAction<boolean>>
   prompt?: Event
 }
 
 export const PwaContext = createContext<PwaContextType>({
-  showInstallButton: false,
-  showInstallationInstruction: false,
+  showPwaInstallOptions: false,
+  showSafariInstructions: false,
 })
 
 /**
  * this provider contains PWA information needed for components
  */
 export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
-  const [showInstallButton, setShowInstallButton] = useState<boolean>(false)
-  const [showInstallationInstruction, setShowInstallationInstruction] =
+  const [showPwaInstallOptions, setShowPwaInstallOptions] =
+    useState<boolean>(false)
+  const [showSafariInstructions, setShowSafariInstructions] =
     useState<boolean>(false)
   const [prompt, setPrompt] = useState<Event | undefined>(undefined)
 
@@ -47,7 +48,7 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
     // this is needed because chrome on mac contains both strings
     if (!isPwa && !hasChrome && hasSafari) {
       // safari
-      setShowInstallButton(true)
+      setShowPwaInstallOptions(true)
     }
 
     const handleBeforeInstallPrompt = (event: Event) => {
@@ -55,7 +56,7 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
 
       if (!isPwa && hasChrome) {
         // chrome
-        setShowInstallButton(true)
+        setShowPwaInstallOptions(true)
         // is needed in order to open the installation prompt
         setPrompt(event)
       }
@@ -63,7 +64,7 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
 
     const handleAfterInstallPrompt = () => {
       trackEvent('PwaInstallation', 'PWA installed')
-      setShowInstallButton(false)
+      setShowPwaInstallOptions(false)
     }
 
     window?.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
@@ -84,8 +85,8 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
       // @ts-expect-error actually we expect here the BeforeInstallPromptEvent but it is not supported by at least firefox
       prompt?.prompt()
     } else if (!hasChrome && hasSafari) {
-      setShowInstallButton(false)
-      setShowInstallationInstruction(true)
+      setShowPwaInstallOptions(false)
+      setShowSafariInstructions(true)
     }
   }, [prompt, hasChrome, hasSafari, trackEvent])
 
@@ -93,9 +94,9 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
     <PwaContext.Provider
       value={{
         handleInstallClick,
-        showInstallButton,
-        showInstallationInstruction,
-        setShowInstallationInstruction,
+        showPwaInstallOptions,
+        showSafariInstructions,
+        setShowSafariInstructions,
         prompt,
       }}
     >
