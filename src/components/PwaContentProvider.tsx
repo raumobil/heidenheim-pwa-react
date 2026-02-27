@@ -48,7 +48,7 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
     // this is needed because chrome on mac contains both strings
     if (!isPwa && !hasChrome && hasSafari) {
       // safari
-      setShowPwaInstallOptions(true)
+      setShowSafariInstructions(true)
     }
 
     const handleBeforeInstallPrompt = (event: Event) => {
@@ -84,11 +84,8 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
       trackEvent('PwaInstallation', 'click', 'installButton')
       // @ts-expect-error actually we expect here the BeforeInstallPromptEvent but it is not supported by at least firefox
       prompt?.prompt()
-    } else if (!hasChrome && hasSafari) {
-      setShowPwaInstallOptions(false)
-      setShowSafariInstructions(true)
     }
-  }, [prompt, hasChrome, hasSafari, trackEvent])
+  }, [prompt, trackEvent])
 
   return (
     <PwaContext.Provider
