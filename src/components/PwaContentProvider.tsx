@@ -1,5 +1,6 @@
 'use client'
 
+import usePwaInfo from '@/components/hooks/usePwaInfo'
 import { CustomDimensions } from '@/components/Matomo/constants'
 import useMatomo from '@/components/Matomo/useMatomo'
 import {
@@ -35,19 +36,16 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
     useState<boolean>(false)
   const [prompt, setPrompt] = useState<Event | undefined>(undefined)
 
-  const browser = window?.navigator?.userAgent
-  const isPWA = window?.matchMedia('(display-mode: standalone)')?.matches
-  const hasChrome = browser?.includes('Chrome')
-  const hasSafari = browser?.includes('Safari')
+  const { isPwa, hasChrome, hasSafari } = usePwaInfo()
 
   const { trackEvent, setCustomDimension } = useMatomo()
 
   useEffect(() => {
     // set PWA state custom dimension
-    setCustomDimension(CustomDimensions.IS_PWA, isPWA ? 1 : 0)
+    setCustomDimension(CustomDimensions.IS_PWA, isPwa ? 1 : 0)
 
     // this is needed because chrome on mac contains both strings
-    if (!isPWA && !hasChrome && hasSafari) {
+    if (!isPwa && !hasChrome && hasSafari) {
       // safari
       setShowInstallButton(true)
     }
@@ -55,7 +53,7 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault()
 
-      if (!isPWA && hasChrome) {
+      if (!isPwa && hasChrome) {
         // chrome
         setShowInstallButton(true)
         // is needed in order to open the installation prompt
@@ -78,7 +76,7 @@ export const PwaContentProvider = ({ children }: { children: ReactNode }) => {
       )
       window?.removeEventListener('appinstalled', handleAfterInstallPrompt)
     }
-  }, [hasChrome, hasSafari, isPWA, setCustomDimension, trackEvent])
+  }, [hasChrome, hasSafari, isPwa, setCustomDimension, trackEvent])
 
   const handleInstallClick = useCallback(() => {
     if (prompt) {
