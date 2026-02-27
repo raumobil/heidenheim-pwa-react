@@ -14,7 +14,7 @@ const PwaInstallation = () => {
   const { handleInstallClick, showPwaInstallOptions, showSafariInstructions } =
     useContext(PwaContext)
 
-  const t = useTranslations('PWAInstallation.install')
+  const t = useTranslations('pwa.install')
 
   return (
     <Grid

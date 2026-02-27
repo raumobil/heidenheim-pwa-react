@@ -28,7 +28,7 @@ const PwaInstallationDialog = () => {
   const [open, setOpen] = useState(true)
   const { trackEvent } = useMatomo()
 
-  const t = useTranslations('PWAInstallation.dialog')
+  const t = useTranslations('pwa.dialog')
 
   return (
     <>

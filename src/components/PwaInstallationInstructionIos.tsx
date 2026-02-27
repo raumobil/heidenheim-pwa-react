@@ -15,7 +15,7 @@ import { useTranslations } from 'next-intl'
  * this component contains the PWA installation instruction for safari
  */
 const PwaInstallationInstructionIos = () => {
-  const t = useTranslations('PWAInstallation.install.instruction')
+  const t = useTranslations('pwa.install.instruction')
 
   return (
     <List sx={{ listStyle: 'decimal', pl: 2.5 }} component={'ol'}>
@@ -35,7 +35,7 @@ const PwaInstallationInstructionIos = () => {
                   px: 0.5,
                 }}
               >
-                <IosShare titleAccess={t('iosShareIcon')} />
+                <IosShare titleAccess={t('titleAccessIosShareIcon')} />
               </Paper>
             </Grid>
           </Grid>
@@ -55,7 +55,9 @@ const PwaInstallationInstructionIos = () => {
           >
             <Grid container direction='row' alignItems='center' gap={0.5}>
               <Typography variant='textLarge'>{t('toHomeScreen')}</Typography>
-              <AddBoxOutlined titleAccess={t('addBoxIconOutlinedIcon')} />
+              <AddBoxOutlined
+                titleAccess={t('titleAccessAddBoxIconOutlinedIcon')}
+              />
             </Grid>
           </Paper>
         </ListItemText>

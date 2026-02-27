@@ -14,7 +14,7 @@ const PwaInstallationButtonChromium = ({
 }: {
   onClick: MouseEventHandler<HTMLAnchorElement>
 }) => {
-  const t = useTranslations('PWAInstallation.install')
+  const t = useTranslations('pwa.install')
 
   return (
     // @ts-expect-error for some reason now it does not like missing href

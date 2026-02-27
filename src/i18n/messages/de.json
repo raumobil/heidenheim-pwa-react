@@ -39,7 +39,7 @@
   "BackButton": {
     "label": "zurück"
   },
-  "PWAInstallation": {
+  "pwa": {
     "dialog": {
       "title": "appgefahren! WebApp installieren",
       "iosText": "Füge die appgefahren! WebApp deinem Home-Bildschirm hinzu, um sie immer dabei zu haben.",
@@ -54,8 +54,8 @@
         "step1": "Tippe auf ",
         "step2": "wähle ",
         "toHomeScreen": "Zum Home-Bildschirm ",
-        "iosShareIcon": "Teilen-Button",
-        "addBoxIconOutlinedIcon": "hinzufügen-Button"
+        "titleAccessIosShareIcon": "Teilen-Button",
+        "titleAccessAddBoxIconOutlinedIcon": "hinzufügen-Button"
       }
     }
   },
