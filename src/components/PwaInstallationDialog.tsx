@@ -59,10 +59,7 @@ const PwaInstallationDialog = () => {
               alignContent={'center'}
             >
               <Grid flexGrow={0}>
-                <Avatar
-                  src='/pwa-icons/180-maskable.png'
-                  variant={showSafariInstructions ? 'rounded' : 'circular'}
-                />
+                <Avatar src='/pwa-icons/180-maskable.png' variant={'rounded'} />
               </Grid>
               <Grid alignItems={'flex-start'} flexGrow={0}>
                 {t('title')}
