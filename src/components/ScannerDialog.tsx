@@ -64,7 +64,7 @@ const ScannerDialog = ({
             severity: 'error',
           })
         }
-      } else if (rawCode.startsWith('https://heidenheim.smartqr.info')) {
+      } else if (rawCode.includes('.smartqr.info')) {
         try {
           const redirectUrl = await unshortenUrl(rawCode)
           if (redirectUrl) {
